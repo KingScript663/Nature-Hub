@@ -1,0 +1,217 @@
+local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "Blade Ball | Nature",
+    LoadingTitle = "Blade Ball",
+    LoadingSubtitle = "By KingScript",
+    ConfigurationSaving = {
+        Enabled = true,
+        FolderName = "BladeBallAutoParry",
+        FileName = "Config"
+    }
+})
+
+local MainTab = Window:CreateTab("Main", 4483362458)
+local VisualTab = Window:CreateTab("Visual", 4483362458)
+
+local Toggle = nil
+local ParryEnabled = false
+local AutoSpamEnabled = false
+local VisualStudsEnabled = false
+
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+local UserInputService = game:GetService("UserInputService")
+local Player = Players.LocalPlayer
+
+local MinRadius = 40
+local MaxRadius = 800
+local CooldownTime = 0.8
+local DefaultCooldown = 0.8
+
+local Cooldown = 0
+local Parried = false
+local Connection = nil
+local Sphere = nil
+local lastRadius = MinRadius
+
+local function CreateDetectionSphere()
+    local part = Instance.new("Part")
+    part.Name = "DetectionSphere"
+    part.Shape = Enum.PartType.Ball
+    part.Material = Enum.Material.ForceField
+    part.Anchored = true
+    part.CanCollide = false
+    part.Transparency = 0.75
+    part.Color = Color3.fromRGB(255, 255, 255)
+    part.Size = Vector3.new(MinRadius * 2, MinRadius * 2, MinRadius * 2)
+    part.Parent = workspace
+    return part
+end
+
+local function GetBall()
+    for _, Ball in ipairs(workspace:WaitForChild("Balls"):GetChildren()) do
+        if Ball:GetAttribute("realBall") then
+            return Ball
+        end
+    end
+    return nil
+end
+
+local function ResetConnection()
+    if Connection then
+        Connection:Disconnect()
+        Connection = nil
+    end
+end
+
+local function SetRadius(radius)
+    if not Sphere then return end
+    if math.abs(radius - lastRadius) < 1 then return end
+    lastRadius = radius
+    local tween = TweenService:Create(Sphere, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+        Size = Vector3.new(radius * 2, radius * 2, radius * 2)
+    })
+    tween:Play()
+end
+
+workspace.Balls.ChildAdded:Connect(function()
+    if not ParryEnabled then return end
+    local Ball = GetBall()
+    if not Ball then return end
+    ResetConnection()
+    Connection = Ball:GetAttributeChangedSignal("target"):Connect(function()
+        Parried = false
+    end)
+end)
+
+RunService.PreSimulation:Connect(function()
+    if not ParryEnabled then return end
+
+    local Ball = GetBall()
+    local Character = Player.Character
+    if not Ball or not Character then return end
+
+    local HRP = Character:FindFirstChild("HumanoidRootPart")
+    if not HRP then return end
+
+    if not Sphere then return end
+    if not VisualStudsEnabled then Sphere.Transparency = 1 else Sphere.Transparency = 0.75 end
+
+    local zoomies = Ball:FindFirstChild("zoomies")
+    if not zoomies then return end
+
+    local BallPosition = Ball.Position
+    local BallVelocity = zoomies.VectorVelocity
+    local ToPlayer = (HRP.Position - BallPosition).Unit
+
+    local IncomingSpeed = BallVelocity:Dot(ToPlayer)
+    IncomingSpeed = math.max(IncomingSpeed, 0)
+
+    local ScaledRadius = math.clamp(IncomingSpeed, MinRadius, MaxRadius)
+    Sphere.Position = HRP.Position
+
+    local isTargetingPlayer = Ball:GetAttribute("target") == Player.Name
+    Sphere.Color = isTargetingPlayer and Color3.fromRGB(255, 0, 0) or Color3.fromRGB(255, 255, 255)
+
+    SetRadius(ScaledRadius)
+
+    local Distance = (HRP.Position - Ball.Position).Magnitude
+    local shouldParry = isTargetingPlayer and Distance <= Sphere.Size.X / 2
+
+    if shouldParry and not Parried then
+        local mouseX, mouseY = UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y
+        VirtualInputManager:SendMouseButtonEvent(mouseX, mouseY, 0, true, game, 0)
+        VirtualInputManager:SendMouseButtonEvent(mouseX, mouseY, 0, false, game, 0)
+        Parried = true
+        Cooldown = tick()
+    end
+
+    if Parried and (tick() - Cooldown) >= DefaultCooldown then
+        Parried = false
+    end
+end)
+
+-- Auto Spam loop riêng
+task.spawn(function()
+    while true do
+        task.wait(0.02)
+        if not AutoSpamEnabled then continue end
+
+        local HRP = Player.Character and Player.Character:FindFirstChild("HumanoidRootPart")
+        if not HRP then continue end
+
+        local threat = false
+        for _, plr in ipairs(Players:GetPlayers()) do
+            if plr ~= Player and plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
+                if (HRP.Position - plr.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+                    threat = true
+                    break
+                end
+            end
+        end
+
+        if not threat then
+            for _, npc in ipairs(workspace:GetDescendants()) do
+                if npc:IsA("Model") and npc ~= Player.Character and npc:FindFirstChild("HumanoidRootPart") then
+                    if (HRP.Position - npc.HumanoidRootPart.Position).Magnitude <= 10 then
+                        threat = true
+                        break
+                    end
+                end
+            end
+        end
+
+        if threat then
+            local mx, my = UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y
+            VirtualInputManager:SendMouseButtonEvent(mx, my, 0, true, game, 0)
+            VirtualInputManager:SendMouseButtonEvent(mx, my, 0, false, game, 0)
+        end
+    end
+end)
+
+-- Giao diện Toggle
+Toggle = MainTab:CreateToggle({
+    Name = "Auto Parry",
+    CurrentValue = false,
+    Flag = "AutoParryToggle",
+    Callback = function(value)
+        ParryEnabled = value
+        if ParryEnabled then
+            if not Sphere then
+                Sphere = CreateDetectionSphere()
+            end
+        else
+            if Sphere then
+                Sphere.Transparency = 1
+            end
+            Parried = false
+            ResetConnection()
+        end
+    end
+})
+
+MainTab:CreateToggle({
+    Name = "Auto Spam",
+    CurrentValue = false,
+    Flag = "AutoSpamToggle",
+    Callback = function(value)
+        AutoSpamEnabled = value
+    end
+})
+
+VisualTab:CreateToggle({
+    Name = "VisualStuds",
+    CurrentValue = false,
+    Flag = "VisualStudsToggle",
+    Callback = function(value)
+        VisualStudsEnabled = value
+        if Sphere then
+            Sphere.Transparency = (ParryEnabled and value) and 0.75 or 1
+        end
+    end
+})
+
+Rayfield:LoadConfiguration()
