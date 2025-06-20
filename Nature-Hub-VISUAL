@@ -944,7 +944,7 @@ local Slider = MainTab:CreateSlider({
 	end
 })
 
-local Section = MainTab:CreateSection("Clashed)
+local Section = MainTab:CreateSection("Clashed")
 
 local Toggle = MainTab:CreateToggle({
    Name = "Auto Spam",
