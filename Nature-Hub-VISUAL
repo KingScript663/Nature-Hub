@@ -1,43 +1,34 @@
-local b='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-function cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE(data) m=string.sub(data, 0, 55) data=data:gsub(m,'')
-
-data = string.gsub(data, '[^'..b..'=]', '') return (data:gsub('.', function(x) if (x == '=') then return '' end local r,f='',(b:find(x)-1) for i=6,1,-1 do r=r..(f%2^i-f%2^(i-1)>0 and '1' or '0') end return r; end):gsub('%d%d%d?%d?%d?%d?%d?%d?', function(x) if (#x ~= 8) then return '' end local c=0 for i=1,8 do c=c+(x:sub(i,i)=='1' and 2^(8-i) or 0) end return string.char(c) end)) end
-
-
- 
-
-
-local ContextActionService = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('zuoeQDylbkZZuBebLNzDlGUECKTXaRkHLlwaSqbJFWqcyXaXWlLrlIxQ29udGV4dEFjdGlvblNlcnZpY2U='))
+local ContextActionService = game:GetService('ContextActionService')
 local Phantom = false
 
 local function BlockMovement(actionName, inputState, inputObject)
     return Enum.ContextActionResult.Sink
 end
 
-local UserInputService = cloneref(game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('QpAshEGckOoYJfSqjCNyyjKkChFjiaxiJaoYkMUCxCCdvYhtDImCmuiVXNlcklucHV0U2VydmljZQ==')))
-local ContentProvider = cloneref(game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ctbAOBBlufpSumwEEaYHhUUCfWIbTLauUjtcHgxdwmhhLFyIiuNUErxQ29udGVudFByb3ZpZGVy')))
-local TweenService = cloneref(game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('eLOUAfWuXYgsLFSRCxZFwFlLVXIlSZpJOuqPEUlGPNoFUymMNJgZyDCVHdlZW5TZXJ2aWNl')))
-local HttpService = cloneref(game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('sbGaPjdlROHAHXVkNHhFdsngqugCJyLASrZEmvmDvRKwmOSavvIkVnESHR0cFNlcnZpY2U=')))
-local TextService = cloneref(game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('caaTiLpxldAjYsGZNfHhygwiwhlAQdNVXapyXNihWHyziYelGWetcalVGV4dFNlcnZpY2U=')))
-local RunService = cloneref(game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('BOdIFCmDLcYiHvjWvLSXvWKtBTqEWabZViERugoOUzHVXzxWIqdzABPUnVuU2VydmljZQ==')))
-local Lighting = cloneref(game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('StXKknzjSPVsZPrsEuiacbpwDSMkgBhnSTRUEFHitpqfWYuAAYHAnybTGlnaHRpbmc=')))
-local Players = cloneref(game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('zJmsdpEeJxHMVOsnEYwGgXyJJKwRHJhYKuGVOZPthvcRaeeAfnLihHmUGxheWVycw==')))
-local CoreGui = cloneref(game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ogZrKUpBJIhiYzfTNPZlcFdkhkZXKlvpFKXRaotuJqIXQLDHIVgfTtyQ29yZUd1aQ==')))
-local Debris = cloneref(game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('aqVOzrlBAODCieIKReoBEegWkKTmgUDYkYvUfqXNMbCPsxBHSkqyByzRGVicmlz')))
+local UserInputService = cloneref(game:GetService('UserInputService'))
+local ContentProvider = cloneref(game:GetService('ContentProvider'))
+local TweenService = cloneref(game:GetService('TweenService'))
+local HttpService = cloneref(game:GetService('HttpService'))
+local TextService = cloneref(game:GetService('TextService'))
+local RunService = cloneref(game:GetService('RunService'))
+local Lighting = cloneref(game:GetService('Lighting'))
+local Players = cloneref(game:GetService('Players'))
+local CoreGui = cloneref(game:GetService('CoreGui'))
+local Debris = cloneref(game:GetService('Debris'))
 
-local Players = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('XztElohbbsLTCysVgMBzwCPvWZDTQybSDbTHXKoNWSyacuHiLEIKJNJUGxheWVycw=='))
+local Players = game:GetService('Players')
 local Player = Players.LocalPlayer
 
 
-local ReplicatedStorage = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('jRYubkfKKHqjwSwWQFiHFdansZciiwXvgrKNwGDNxnlcMmrfKTYYaLpUmVwbGljYXRlZFN0b3JhZ2U='))
+local ReplicatedStorage = game:GetService('ReplicatedStorage')
 
 local Tornado_Time = tick()
 
-local UserInputService = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('oRzsqPjDsjwJhVTkggyzTERqCgrandVjGhxiDtzeIDFytlTZUPfEXyMVXNlcklucHV0U2VydmljZQ=='))
+local UserInputService = game:GetService('UserInputService')
 local Last_Input = UserInputService:GetLastInputType()
 
-local Debris = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('lDGvFobATMDzJSXqmSmTAjmDoqaRJGfyyIsfCFNeYFMigrAxXgsdsJPRGVicmlz'))
-local RunService = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ahjryMsGYlXYEgbBHZVLGeHpkMbxzzqIEwXItSVfCtcPWGvNTZXgMvTUnVuU2VydmljZQ=='))
+local Debris = game:GetService('Debris')
+local RunService = game:GetService('RunService')
 
 local Vector2_Mouse_Location = nil
 local Grab_Parry = nil
@@ -48,24 +39,24 @@ local Speed_Divisor_Multiplier = 1.1
 local LobbyAP_Speed_Divisor_Multiplier = 1.1
 local firstParryFired = false
 local ParryThreshold = 2.5
-local firstParryType = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('qbgIdOojEJmFUgrZgTLDFwuBHCMAWCNOYEHuCYKOuxyCKYSfOXeFafPRl9LZXk=')
+local firstParryType = 'F_Key'
 local Previous_Positions = {}
-local VirtualInputManager = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('FgLFMFMeRzYritVBcAQRumLlYKzWhhhXTNwausXfDkleCituvALMTkrVmlydHVhbElucHV0TWFuYWdlcg=='))
-local VirtualInputService = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('yCIPkXxLyDnPRveMyHfpycUgfeSwdCgPCBPSMRdyfCMZPuZAgzNEyoMVmlydHVhbElucHV0TWFuYWdlcg=='))
+local VirtualInputManager = game:GetService("VirtualInputManager")
+local VirtualInputService = game:GetService("VirtualInputManager")
 
 
-local GuiService = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('iWXzksINKDfinooiquxmMsrYEyerktTpNCVzxzuUyNaQvXwAuuREyOsR3VpU2VydmljZQ=='))
+local GuiService = game:GetService('GuiService')
 
 local function updateNavigation(guiObject: GuiObject | nil)
     GuiService.SelectedObject = guiObject
 end
 
 local function performFirstPress(parryType)
-    if parryType == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('hewmjYZYMdSgzxaZRshpwWtkEMMPzrIMtulbdrhTzXxGCJeUqclbLvtRl9LZXk=') then
+    if parryType == 'F_Key' then
         VirtualInputService:SendKeyEvent(true, Enum.KeyCode.F, false, nil)
-    elseif parryType == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('kUkqyFTmVcqjxOGkEZeqgqaSwqZIOUIdKqpGmzTNXwGbHimrVKgECIZTGVmdF9DbGljaw==') then
+    elseif parryType == 'Left_Click' then
         VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 0)
-    elseif parryType == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('yRDDIbPiHKvbYwixcwMrySAHbHqlspGPamvauwUmIMQWFwuHQrFMaRzTmF2aWdhdGlvbg==') then
+    elseif parryType == 'Navigation' then
         local button = Players.LocalPlayer.PlayerGui.Hotbar.Block
         updateNavigation(button)
         VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Return, false, game)
@@ -89,8 +80,8 @@ local HashThree
 
 LPH_NO_VIRTUALIZE(function()
     for Index, Value in next, getgc() do
-        if rawequal(typeof(Value), cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('jXGyAoJENvoBRefpdNhjMZopaFZbbzIMNtmBXqwMjCakWtlvXXiipZzZnVuY3Rpb24=')) and islclosure(Value) and getrenv().debug.info(Value, cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('LCOcURjVTGRapfyyOsDKQXmqACNoluQKGbYXnpsaqEWoTVTTDdKRJZhcw==')):find(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('JeOOUHxVFmZHIubqohGFCYnWuQIYlDRtDOwZQlWjZfVrZFQVobiKUlfU3dvcmRzQ29udHJvbGxlcg==')) then
-            if rawequal(getrenv().debug.info(Value, cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('wXhOMfweDzcdCQeAMsRwBTwIgFhjQUPzozVhkjiYCJKzhGddesqHsTgbA==')), 276) then
+        if rawequal(typeof(Value), "function") and islclosure(Value) and getrenv().debug.info(Value, "s"):find("SwordsController") then
+            if rawequal(getrenv().debug.info(Value, "l"), 276) then
                 HashOne = getconstant(Value, 62)
                 HashTwo = getconstant(Value, 64)
                 HashThree = getconstant(Value, 65)
@@ -102,7 +93,7 @@ end)()
 
 LPH_NO_VIRTUALIZE(function()
     for Index, Object in next, game:GetDescendants() do
-        if Object:IsA(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('sSutWSIafddfyNNIUFnodzcaowHxMPsXpwaDiepTkZrCsnWYkuKvGROUmVtb3RlRXZlbnQ=')) and string.find(Object.Name, cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('eynWXUPIsuHVVTmGvurCCWNoXtDkoMhdiikpEgDBUQiEDHUhaSGSXmZXG4=')) then
+        if Object:IsA("RemoteEvent") and string.find(Object.Name, "\n") then
             Object.Changed:Once(function()
                 table.insert(PropertyChangeOrder, Object)
             end)
@@ -122,10 +113,10 @@ local GetOpponentPosition = PropertyChangeOrder[3]
 
 local Parry_Key
 
-for Index, Value in pairs(getconnections(game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('DXvYuCgwmQnJBIcCRfVRmdhKjtxicmcwfibHPCmrhvCsJTLlMrVYEGEUGxheWVycw==')).LocalPlayer.PlayerGui.Hotbar.Block.Activated)) do
+for Index, Value in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Hotbar.Block.Activated)) do
     if Value and Value.Function and not iscclosure(Value.Function)  then
         for Index2,Value2 in pairs(getupvalues(Value.Function)) do
-            if type(Value2) == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('UmUwteHeRkDRCMAvVaYzKGBuyCvCVAiJpbjWmVeTwuxDQAMsTTcbbIAZnVuY3Rpb24=') then
+            if type(Value2) == "function" then
                 Parry_Key = getupvalue(getupvalue(Value2, 2), 17);
             end;
         end;
@@ -141,7 +132,7 @@ end
 local Parries = 0
 
 function create_animation(object, info, value)
-    local animation = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('oeptfgOPLrgfZnZVJrAcKVzmEmJBlpAaMGqAtVocjjEgKHaKAtjuHJHVHdlZW5TZXJ2aWNl')):Create(object, info, value)
+    local animation = game:GetService('TweenService'):Create(object, info, value)
 
     animation:Play()
     task.wait(info.Time)
@@ -158,9 +149,9 @@ Animation.storage = {}
 Animation.current = nil
 Animation.track = nil
 
-for _, v in pairs(game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('rktSdzXHGGkwMGkxanPCJvCUCQQiQyJhdiXsRrHOoPmytPmlAoSmjuvUmVwbGljYXRlZFN0b3JhZ2U=')).Misc.Emotes:GetChildren()) do
-    if v:IsA(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ZVKASqVZKCrXEiADAguNCLUcemKvuoDXcpApBNPqsSIFeWYHBHpEDjqQW5pbWF0aW9u')) and v:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('vgaCYKJmzGoJgcpdUDQVfTzkFtyVEqUMmtVfydrmTZWUaJWmWYwfHkGRW1vdGVOYW1l')) then
-        local Emote_Name = v:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('kGcEGNxjbABzHDfMNXyrBSrbKNnYRYFofVFPrIbXUQFLZFVmoJeNnxmRW1vdGVOYW1l'))
+for _, v in pairs(game:GetService("ReplicatedStorage").Misc.Emotes:GetChildren()) do
+    if v:IsA("Animation") and v:GetAttribute("EmoteName") then
+        local Emote_Name = v:GetAttribute("EmoteName")
         Animation.storage[Emote_Name] = v
     end
 end
@@ -176,8 +167,8 @@ table.sort(Emotes_Data)
 local Auto_Parry = {}
 
 function Auto_Parry.Parry_Animation()
-    local Parry_Animation = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('WZSHvgTjZQgAsWjZacLZyScTVOcXHnAMFAFJpWwKIBoDLAfvvVyIvNgUmVwbGljYXRlZFN0b3JhZ2U=')).Shared.SwordAPI.Collection.Default:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ygdsOhkqXtgEnxFMyIbBUuPNRcoaBftrkVuTQOPYaioTNAMqsilFpQCR3JhYlBhcnJ5'))
-    local Current_Sword = Player.Character:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ucDjFizsclykwsjlKJTlOQAmTAAAwwUPcMdYtXGSQkXSgoMuAbNqkumQ3VycmVudGx5RXF1aXBwZWRTd29yZA=='))
+    local Parry_Animation = game:GetService("ReplicatedStorage").Shared.SwordAPI.Collection.Default:FindFirstChild('GrabParry')
+    local Current_Sword = Player.Character:GetAttribute('CurrentlyEquippedSword')
 
     if not Current_Sword then
         return
@@ -187,19 +178,19 @@ function Auto_Parry.Parry_Animation()
         return
     end
 
-    local Sword_Data = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('OryOjgabSokukscFKQIpZuNWgQTThseDcjSXoHEPUuHZGbVKBpKElGYUmVwbGljYXRlZFN0b3JhZ2U=')).Shared.ReplicatedInstances.Swords.GetSword:Invoke(Current_Sword)
+    local Sword_Data = game:GetService("ReplicatedStorage").Shared.ReplicatedInstances.Swords.GetSword:Invoke(Current_Sword)
 
-    if not Sword_Data or not Sword_Data[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('KhcdbTFIClnPUnHDRlvfwKmvowOgGLkdYfrAFwsPqdhcKLxGwNJtfIQQW5pbWF0aW9uVHlwZQ==')] then
+    if not Sword_Data or not Sword_Data['AnimationType'] then
         return
     end
 
-    for _, object in pairs(game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('XxgcOUwyXAXMuKdzRVjZGhiBPLwVmaleZJCKVqXDGiAcHFpzzusVfbYUmVwbGljYXRlZFN0b3JhZ2U=')).Shared.SwordAPI.Collection:GetChildren()) do
-        if object.Name == Sword_Data[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('QyqNgnzBCFzXimvACgEuGnqJAyciVcpppHzBAEWNSIJnbiLTdNKwDhwQW5pbWF0aW9uVHlwZQ==')] then
-            if object:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('TtDljTSXraswLSEMDrwkdfoVfaenjADDpTYFajKkDBDEWZHhSaTgWqiR3JhYlBhcnJ5')) or object:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('IgeaAtAgJCmugTrhZQLGEMVwtdwesKLpXIeqcKbDwqhRDLUGKxEWlgjR3JhYg==')) then
-                local sword_animation_type = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('FJIpyzFDtIFtHjNfncOvFwJsmnECytmVoJNmPNYdftzPErImUVvZcCsR3JhYlBhcnJ5')
+    for _, object in pairs(game:GetService('ReplicatedStorage').Shared.SwordAPI.Collection:GetChildren()) do
+        if object.Name == Sword_Data['AnimationType'] then
+            if object:FindFirstChild('GrabParry') or object:FindFirstChild('Grab') then
+                local sword_animation_type = 'GrabParry'
 
-                if object:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('NYkoXNUXmFSJobXKiKVRDvMLlOOiuDdHITlUuMbSTyYDznioRRvqFLsR3JhYg==')) then
-                    sword_animation_type = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('fVBXoZAzRTzpuZxHcaewdpHYZEeuzXVvflHpAeWxoakqHGLwTfRUbDtR3JhYg==')
+                if object:FindFirstChild('Grab') then
+                    sword_animation_type = 'Grab'
                 end
 
                 Parry_Animation = object[sword_animation_type]
@@ -234,7 +225,7 @@ function Auto_Parry.Get_Balls()
     local Balls = {}
 
     for _, Instance in pairs(workspace.Balls:GetChildren()) do
-        if Instance:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('SjjqVbObOiRitpUMZWdNUjTTGXlDISCylILVHHgVTZlbPmBjrxndhegcmVhbEJhbGw=')) then
+        if Instance:GetAttribute('realBall') then
             Instance.CanCollide = false
             table.insert(Balls, Instance)
         end
@@ -244,7 +235,7 @@ end
 
 function Auto_Parry.Get_Ball()
     for _, Instance in pairs(workspace.Balls:GetChildren()) do
-        if Instance:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('FHvgYloTkpnQbzhrBTKzDLoTQQIcMntxHSXsUgHLxUoapWGRKXdmVLxcmVhbEJhbGw=')) then
+        if Instance:GetAttribute('realBall') then
             Instance.CanCollide = false
             return Instance
         end
@@ -253,7 +244,7 @@ end
 
 function Auto_Parry.Lobby_Balls()
     for _, Instance in pairs(workspace.TrainingBalls:GetChildren()) do
-        if Instance:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('qKFeYRiTehgTBBNmHRzkgTvSBVfKqfQGUjUVXydoEYbPZpqowisCoJmcmVhbEJhbGw=')) then
+        if Instance:GetAttribute("realBall") then
             return Instance
         end
     end
@@ -335,17 +326,17 @@ function Auto_Parry.Parry_Data(Parry_Type)
         end
     end
     
-    if Parry_Type == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('MObSJoKfrtEhNxjYDPIHrVpbdBvFfgpzLJfHbbXJdudZJRQSQjXbKeWQ2FtZXJh') then
+    if Parry_Type == 'Camera' then
         return {0, Camera.CFrame, Events, Vector2_Mouse_Location}
     end
     
-    if Parry_Type == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('UfqAGXumpBfnKOZRcqSNVolkmHAdMgmwwRZxCisyRXRCEhsWCMHTGPGQmFja3dhcmRz') then
+    if Parry_Type == 'Backwards' then
         local Backwards_Direction = Camera.CFrame.LookVector * -10000
         Backwards_Direction = Vector3.new(Backwards_Direction.X, 0, Backwards_Direction.Z)
         return {0, CFrame.new(Camera.CFrame.Position, Camera.CFrame.Position + Backwards_Direction), Events, Vector2_Mouse_Location}
     end
 
-    if Parry_Type == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('JLcvtqXVYsrOwuGBFrrQfZCvoSFmQEFqfofxcyGhHVXdDBJTpIPfQFZU3RyYWlnaHQ=') then
+    if Parry_Type == 'Straight' then
         local Aimed_Player = nil
         local Closest_Distance = math.huge
         local Mouse_Vector = Vector2.new(Vector2_Mouse_Location[1], Vector2_Mouse_Location[2])
@@ -374,26 +365,26 @@ function Auto_Parry.Parry_Data(Parry_Type)
         end
     end
     
-    if Parry_Type == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('VPCXWoudVoqXJFOauKHIBIZdgvQuUkUQlbKfHDXTjLKsCbiwLDBPHcJUmFuZG9t') then
+    if Parry_Type == 'Random' then
         return {0, CFrame.new(Camera.CFrame.Position, Vector3.new(math.random(-4000, 4000), math.random(-4000, 4000), math.random(-4000, 4000))), Events, Vector2_Mouse_Location}
     end
     
-    if Parry_Type == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('fiKZQyzqHeVeWzxiYDmVLWzKzvuASDSTdpuuoSKuOdIkAuNZiuzgLWvSGlnaA==') then
+    if Parry_Type == 'High' then
         local High_Direction = Camera.CFrame.UpVector * 10000
         return {0, CFrame.new(Camera.CFrame.Position, Camera.CFrame.Position + High_Direction), Events, Vector2_Mouse_Location}
     end
     
-    if Parry_Type == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('KibfriFnLzilexZYwnnJHbGzyLrITTuGZIHmVmkhiZgMQPFvVoirEaATGVmdA==') then
+    if Parry_Type == 'Left' then
         local Left_Direction = Camera.CFrame.RightVector * 10000
         return {0, CFrame.new(Camera.CFrame.Position, Camera.CFrame.Position - Left_Direction), Events, Vector2_Mouse_Location}
     end
     
-    if Parry_Type == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('gOcXZhnieTmbfzNaXxfFVGhOjOIzfdsaAUcGBkBRakYeqqIuCEoQhzjUmlnaHQ=') then
+    if Parry_Type == 'Right' then
         local Right_Direction = Camera.CFrame.RightVector * 10000
         return {0, CFrame.new(Camera.CFrame.Position, Camera.CFrame.Position + Right_Direction), Events, Vector2_Mouse_Location}
     end
 
-    if Parry_Type == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ARXtMeWRdqQbiolXEKExnHuiLSOSOKhHpiFOXEHColvFbDZncnylsYZUmFuZG9tVGFyZ2V0') then
+    if Parry_Type == 'RandomTarget' then
         local candidates = {}
         for _, v in pairs(workspace.Alive:GetChildren()) do
             if v ~= Player.Character and v.PrimaryPart then
@@ -461,7 +452,7 @@ function Auto_Parry.Is_Curved()
         return false
     end
 
-    local Zoomies = Ball:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('xFGLVHgjkWtabvyXRXfjaSQLRAYBncZcnCZFnfdihQDpaOndXBiriEwem9vbWllcw=='))
+    local Zoomies = Ball:FindFirstChild('zoomies')
 
     if not Zoomies then
         return false
@@ -482,7 +473,7 @@ function Auto_Parry.Is_Curved()
     local Dot_Difference = Dot - Direction_Similarity
     local Distance = (Player.Character.PrimaryPart.Position - Ball.Position).Magnitude
 
-    local Pings = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('tLvszxpstSAKfVeMVKqciuQYvArrGJhbpndHsIsomoeQrSeGUstEDolU3RhdHM=')).Network.ServerStatsItem[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('WEgWMiOPwcLgLxsRHOfHApXmOYTRsXXKCnOJSaiLWJittlgrIuXYgcGRGF0YSBQaW5n')]:GetValue()
+    local Pings = game:GetService('Stats').Network.ServerStatsItem['Data Ping']:GetValue()
 
     local Dot_Threshold = 0.5 - (Pings / 1000)
     local Reach_Time = Distance / Speed - (Pings / 1000)
@@ -586,7 +577,7 @@ function Auto_Parry.Spam_Service(self)
 end
 
 local Connections_Manager = {}
-local Selected_Parry_Type = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('vpHHszFXbWUsfpukJoMETALHMNasmgitTjaVxGvlyIAWaVvoKJycYOJQ2FtZXJh')
+local Selected_Parry_Type = "Camera"
 
 local Infinity = false
 
@@ -604,17 +595,17 @@ local Last_Parry = 0
 
 local AutoParry = true
 
-local Balls = workspace:WaitForChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ZFhYPHvyzoDKbhcbCPPHBBSaDVWUzsKGgVHbJOuzugKBSpjQXsJMPbiQmFsbHM='))
+local Balls = workspace:WaitForChild('Balls')
 local CurrentBall = nil
 local InputTask = nil
 local Cooldown = 0.02
-local RunTime = workspace:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('JXwZBtwDhpDywjcXXWeOAgBeBVquErJvIHvGudAMsXSFgVCrRBNZRfDUnVudGltZQ=='))
+local RunTime = workspace:FindFirstChild("Runtime")
 
 
 
 local function GetBall()
     for _, Ball in ipairs(Balls:GetChildren()) do
-        if Ball:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('UgVgeAkSMCBcvMskPrxXrMiCvtrjCaNJFNvbyZIEXaxMaYeOXjaHsJGZmY=')) then
+        if Ball:FindFirstChild("ff") then
             return Ball
         end
     end
@@ -634,8 +625,8 @@ end
 
 Balls.ChildAdded:Connect(function(Value)
     Value.ChildAdded:Connect(function(Child)
-        if getgenv().SlashOfFuryDetection and Child.Name == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('SWVmDevnhmPdPQyHNMNzDMyCCOYMioyJwdLUeIJaNJdBQEDYXQHCIQGQ29tYm9Db3VudGVy') then
-            local Sof_Label = Child:FindFirstChildOfClass(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('istghfnGlZcUisuUNCPIbGyzDdBoiOglrDXRvXqzhBtywEDAQzuTMsvVGV4dExhYmVs'))
+        if getgenv().SlashOfFuryDetection and Child.Name == 'ComboCounter' then
+            local Sof_Label = Child:FindFirstChildOfClass('TextLabel')
 
             if Sof_Label then
                 repeat
@@ -658,8 +649,8 @@ local player10239123 = Players.LocalPlayer
 RunTime.ChildAdded:Connect(function(Object)
     local Name = Object.Name
     if getgenv().PhantomV2Detection then
-        if Name == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('TNKzINndbjUrFAWwBUulydnBrHFMTrEHeYKodTSXKffIckmQbpdnXhobWF4VHJhbnNtaXNzaW9u') or Name == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('vJHBuQceUSnMVPTpKuTfrUFkbfyKmdwKhIHnCoXtZQocjCBMVAntWocdHJhbnNtaXNzaW9ucGFydA==') then
-            local Weld = Object:FindFirstChildWhichIsA(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('KDQVYdWtiPvRcwQAhaErASweNydBuKYcjLryKrLvPkJgTQLNXSNezTHV2VsZENvbnN0cmFpbnQ='))
+        if Name == "maxTransmission" or Name == "transmissionpart" then
+            local Weld = Object:FindFirstChildWhichIsA("WeldConstraint")
             if Weld then
                 local Character = player10239123.Character or player10239123.CharacterAdded:Wait()
                 if Character and Weld.Part1 == Character.HumanoidRootPart then
@@ -669,12 +660,12 @@ RunTime.ChildAdded:Connect(function(Object)
                     if CurrentBall then
                         local FocusConnection
                         FocusConnection = RunService.RenderStepped:Connect(function()
-                            local Highlighted = CurrentBall:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('xUiFeGHbxzNtJccKPXMYVmGJiswEcgIyJAFqOVaeezVBGFQdIWEHVjaaGlnaGxpZ2h0ZWQ='))
+                            local Highlighted = CurrentBall:GetAttribute("highlighted")
     
                             if Highlighted == true then
                                 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 36
     
-                                local HumanoidRootPart = Character:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('dUcGeZdBZTHhNIVkuGDphXlIEjmwPRSgTsuaraFBBkCpUOvuWRujgkqSHVtYW5vaWRSb290UGFydA=='))
+                                local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
                                 if HumanoidRootPart then
                                     local PlayerPosition = HumanoidRootPart.Position
                                     local BallPosition = CurrentBall.Position
@@ -714,9 +705,9 @@ RunTime.ChildAdded:Connect(function(Object)
 end)
 
 local player11 = game.Players.LocalPlayer
-local PlayerGui = player11:WaitForChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('BAhvzkaYKlLVcFiidxmzcCrhMthpUnWsXUCmriOTdstUgioAHPnScCRUGxheWVyR3Vp'))
-local playerGui = player11:WaitForChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('bmaOgmMTPCnHUJwzhvHkHVIdfbRagntikUuKeBMmWfkZgshGSemNGaxUGxheWVyR3Vp'))
-local Hotbar = PlayerGui:WaitForChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('DUkjGuHNmCaHLehVQnodfvPhilgEVApgbTYyZvjqmjZrqtdYNlxgWiGSG90YmFy'))
+local PlayerGui = player11:WaitForChild("PlayerGui")
+local playerGui = player11:WaitForChild("PlayerGui")
+local Hotbar = PlayerGui:WaitForChild("Hotbar")
 
 
 local ParryCD = playerGui.Hotbar.Block.UIGradient
@@ -732,7 +723,7 @@ end
 
 local function cooldownProtection()
     if isCooldownInEffect1(ParryCD) then
-        game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('pswVeXOiiGBemQbBLyuuIqbmQZtrlSISCIAWaqCgLUNxkJnabzhijqeUmVwbGljYXRlZFN0b3JhZ2U=')).Remotes.AbilityButtonPress:Fire()
+        game:GetService("ReplicatedStorage").Remotes.AbilityButtonPress:Fire()
         return true
     end
     return false
@@ -740,60 +731,60 @@ end
 
 local function AutoAbility()
     if isCooldownInEffect2(AbilityCD) then
-        if Player.Character.Abilities[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('qUhxlsGioguPRmqRqjnxJNjPjlCZGCLIZXPBuWxLNdTTdhUFgFcqWMbUmFnaW5nIERlZmxlY3Rpb24=')].Enabled or Player.Character.Abilities[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('IPhNjshQJWXQFFEcaBpqPStKQiNDRPvgJHIpESNIhaGocWkWrdNkkSxUmFwdHVyZQ==')].Enabled or Player.Character.Abilities[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('knyoCehVxetqpzftlHFRzkOPMVOPFnCgwRBZCdrbBxqPDprDRXanpCKQ2FsbWluZyBEZWZsZWN0aW9u')].Enabled or Player.Character.Abilities[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('aHJSVXQCkWWshgjqHygilcPCkzSVfwpIZPvyVDWalsmwbTTxlneJMtoQWVyb2R5bmFtaWMgU2xhc2g=')].Enabled or Player.Character.Abilities[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('PdKKwarwZAYjwTukwvcHDBPFKyrgQaukBHQVFxmeqgkWEVLtdgNqzGARnJhY3R1cmU=')].Enabled or Player.Character.Abilities[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('sqNDTrWMuMCMoUSAqcFckfbKOYordjsUpSZzgEPJUQBBwamsjwkWTASRGVhdGggU2xhc2g=')].Enabled then
+        if Player.Character.Abilities["Raging Deflection"].Enabled or Player.Character.Abilities["Rapture"].Enabled or Player.Character.Abilities["Calming Deflection"].Enabled or Player.Character.Abilities["Aerodynamic Slash"].Enabled or Player.Character.Abilities["Fracture"].Enabled or Player.Character.Abilities["Death Slash"].Enabled then
             Parried = true
-            game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('LWEOWSVCebxWXwbmaJNcRbzuMSYqhVFlDQPHeTdAfdrnTsAdwVflFVUUmVwbGljYXRlZFN0b3JhZ2U=')).Remotes.AbilityButtonPress:Fire()
+            game:GetService("ReplicatedStorage").Remotes.AbilityButtonPress:Fire()
             task.wait(2.432)
-            game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('LRapkyyTaaqvhDLnNiZzBKtMtruckmfNaCHnONHITpNEQliiDYvkkAkUmVwbGljYXRlZFN0b3JhZ2U=')):WaitForChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('IUrNoYLQCXjoGgVMygblYAVwWKRyNxqfDIhAJzspqIZLokDePLXOQawUmVtb3Rlcw==')):WaitForChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('hodBkikEWQpEhWFonoCKetNqGOHEORuaLRfgMfdZGscPuuQIsBNrsbSRGVhdGhTbGFzaFNob290QWN0aXZhdGlvbg==')):FireServer(true)
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("DeathSlashShootActivation"):FireServer(true)
             return true
         end
     end
     return false
 end
 
-local Airflow = loadstring(game:HttpGetAsync(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('WuzHNeVJFnYfvaklzqYmelvtvfkZCTgVtxKBydktLaabmQmdesKsjUAaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tLzRscGFjYS1waW4vQWlyZmxvdy9yZWZzL2hlYWRzL21haW4vc3JjL3NvdXJjZS5sdWF1')))();
+local Airflow = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/4lpaca-pin/Airflow/refs/heads/main/src/source.luau"))();
 
 local Window = Airflow:Init({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('OdyRhzmSFcEKMtmEipbFFtbmVxOxMOezxeNaXxRnCqFhUmSIHPZdXZvQ2VsZXN0aWE='),
-	Keybind = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('gzONkAwVMozFaemrNTbzYlYKIbIEvZXFDMLDWAdIGgVYaqYeGVzgUkmTGVmdENvbnRyb2w='),
-	Logo = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('heUGDCcVaTruXslVfxrZjHMdRyExMIgkloSzAMPOKstkSoCIwJGEhYbaHR0cDovL3d3dy5yb2Jsb3guY29tL2Fzc2V0Lz9pZD05NDIyMDM0ODc4NTQ3Ng=='),
+	Name = "Celestia",
+	Keybind = "LeftControl",
+	Logo = "http://www.roblox.com/asset/?id=94220348785476",
 });
 
 local Blatant = Window:DrawTab({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('iUTDsfGlDOLfUWguGHQNqnARwbiIopBvaRnVmqLIBMKuiZfLRcYOYEBQmxhdGFudA=='),
-	Icon = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('nGUAxcZaTjcdZxFfvAcjSNtgjpcFtvSLJXJOLTetdNYlbmtxdJGERrzc3dvcmQ=')
+	Name = "Blatant",
+	Icon = "sword"
 })
 
 local player = Window:DrawTab({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('UCGiEdoxCcxkormYwVatbCUwttXQAziYeDOVNkxYNYtZxOHbEykUXcwUGxheWVy'),
-	Icon = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ITymbReXbjOdvQCCcCSBnFGEjvSuMnmOlAfSxtymTOvsiLqJOkfqeywdXNlcg==')
+	Name = "Player",
+	Icon = "user"
 })
 
 local world = Window:DrawTab({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ducLkYWewSZSJIYgLrQlblomUfviHPJVjZHzUnWIVqYbevYXFeRYVCwV29ybGQ='),
-	Icon = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('OkanZHEbrsgjwGLCXdXjpiDFqBDcoKyAKYqRgVWeJmpgYIXJeRKWAtZZ2xvYmU=')
+	Name = "World",
+	Icon = "globe"
 })
 
 local farm = Window:DrawTab({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('SVWWKJFpKFmngJETyfQkyzsNwVoMCPpRrfBANgsYDnklteqcyDoUkCpRmFybQ=='),
-	Icon = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('nkdnWWyxXIdDgaLoTlJmWVrGMUxqHiVKvXhLQFhkZDRDTMxuYEuDTuhd3JhcC10ZXh0')
+	Name = "Farm",
+	Icon = "wrap-text"
 })
 
 local misc = Window:DrawTab({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('IoaQMlGGuiwyPQtPrePIpIfYqdUjUeWrhsRoeiOfjyZtRjRiCUtpvmTTWlzYw=='),
-	Icon = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('dJyDjZkbYNeKIHUXPPMMfrlTynUoQnUFRYvjTkQlMphNRfKlhiofVtYbGF5ZXJz')
+	Name = "Misc",
+	Icon = "layers"
 })
 
 local module = Blatant:AddSection({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('uvsfAYDwizApkXpZLwyUXAnxVNPUFLtFoPJZmQIVgszsSJiuxHoBqdGQXV0byBQYXJyeQ=='),
-	Position = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('cSxUeNUudIjvozpkahoWILznocpPAcfiyYeRnEJXiOoeIbaiZjlRmtrbGVmdA=='),
+	Name = "Auto Parry",
+	Position = "left",
 });
 
 module:AddToggle({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('suYmZeaMATsHVSvZkoNpFAmkWZVeUqLHCkNemKKNnESCyjODDPdWbOKQXV0byBQYXJyeQ=='),
+	Name = "Auto Parry",
 	Callback = function(value)
         if value then
-            Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ZTtbFLYjHyOxEDOPZWnIBSOzJtGbAQdjWYwYQYZOamibwQLrnXMtAnYQXV0byBQYXJyeQ==')] = RunService.PreSimulation:Connect(function()
+            Connections_Manager['Auto Parry'] = RunService.PreSimulation:Connect(function()
                 local One_Ball = Auto_Parry.Get_Ball()
                 local Balls = Auto_Parry.Get_Balls()
 
@@ -803,12 +794,12 @@ module:AddToggle({
                         return
                     end
 
-                    local Zoomies = Ball:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('mOguSHVFJXyCzOHNmYjOqwqXcieMeyFnvlfbertGtHafZLYFpurflptem9vbWllcw=='))
+                    local Zoomies = Ball:FindFirstChild('zoomies')
                     if not Zoomies then
                         return
                     end
 
-                    Ball:GetAttributeChangedSignal(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('xoxPmpclmJdKwGWaiVpLoqQUiQANRDzKCcRrezKeLMXtDGLzwobMJqsdGFyZ2V0')):Once(function()
+                    Ball:GetAttributeChangedSignal('target'):Once(function()
                         Parried = false
                     end)
 
@@ -816,14 +807,14 @@ module:AddToggle({
                         return
                     end
 
-                    local Ball_Target = Ball:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('dhucxdDvzBmKVEGMkLppCNrJpfkTnzOuBrEGRXhhxONmWMrsVubeVQudGFyZ2V0'))
-                    local One_Target = One_Ball:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('JzMWLSqaMTtuQPVypYdYWDhjtgivrmdYUwKcneLOdqZZKBmYzOiFCmndGFyZ2V0'))
+                    local Ball_Target = Ball:GetAttribute('target')
+                    local One_Target = One_Ball:GetAttribute('target')
 
                     local Velocity = Zoomies.VectorVelocity
 
                     local Distance = (Player.Character.PrimaryPart.Position - Ball.Position).Magnitude
 
-                    local Ping = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('cKunzxutuSAjPHJsTkiRAnmOqEGOqxcrlPJuIFVXeidRkrxvgQIMemFU3RhdHM=')).Network.ServerStatsItem[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('MKTQgXPHUSGOIGlFHYtKqEgeASTxWCTwpDCQuEKWoULdkqqpEtVqzGHRGF0YSBQaW5n')]:GetValue() / 10
+                    local Ping = game:GetService('Stats').Network.ServerStatsItem['Data Ping']:GetValue() / 10
 
                     local Ping_Threshold = math.clamp(Ping / 10, 5, 17)
 
@@ -847,10 +838,10 @@ module:AddToggle({
                     local Curved = Auto_Parry.Is_Curved()
 
 
-                    if Phantom and Player.Character:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('IciPGdTckmrmuEjlKSoKNUzepLIrcxSDgPQPQsQAhpDJimNQFHAhULvUGFycnlIaWdobGlnaHQ=')) and getgenv().PhantomV2Detection then
+                    if Phantom and Player.Character:FindFirstChild('ParryHighlight') and getgenv().PhantomV2Detection then
                     --Controls:Disable()
 
-                ContextActionService:BindAction(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('EwuosrsvPbEwlzIeKRqWpgXUDlULSPJTEgqxZHYQWpBZGayiYCbqQmHQmxvY2tQbGF5ZXJNb3ZlbWVudA=='), BlockMovement, false, Enum.KeyCode.W, Enum.KeyCode.A, Enum.KeyCode.S, Enum.KeyCode.D, Enum.UserInputType.Touch)
+                ContextActionService:BindAction('BlockPlayerMovement', BlockMovement, false, Enum.KeyCode.W, Enum.KeyCode.A, Enum.KeyCode.S, Enum.KeyCode.D, Enum.UserInputType.Touch)
 
                     Player.Character.Humanoid.WalkSpeed = 36
                     Player.Character.Humanoid:MoveTo(Ball.Position)
@@ -866,10 +857,10 @@ module:AddToggle({
                         until not Phantom
                     end)
 
-                    Ball:GetAttributeChangedSignal(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('pdWJYGUVRcFfUgPLhXeaknTTIvYeKFCtVFeYPFlFgJFqLCFpelMvVsMdGFyZ2V0')):Once(function()
+                    Ball:GetAttributeChangedSignal('target'):Once(function()
                         --Controls:Enable()
 
-                        ContextActionService:UnbindAction(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ugDyBntEnCWqVSAlyyeVimAKYRlbBfnsyGoZMfMsJWosMrGJTpBqiTGQmxvY2tQbGF5ZXJNb3ZlbWVudA=='))
+                        ContextActionService:UnbindAction('BlockPlayerMovement')
                         Phantom = false
 
                         Player.Character.Humanoid:MoveTo(Player.Character.HumanoidRootPart.Position)
@@ -888,13 +879,13 @@ module:AddToggle({
                     Parried = true
                 end
 
-                    if Ball:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('LZkwdVQPMMoerPEjvNZjGNFqYlsweSQgEyHlLNLvTnLJswvXJdpQwBrQWVyb0R5bmFtaWNTbGFzaFZGWA==')) then
+                    if Ball:FindFirstChild('AeroDynamicSlashVFX') then
                         Debris:AddItem(Ball.AeroDynamicSlashVFX, 0)
                         Tornado_Time = tick()
                     end
 
-                    if Runtime:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('VCtlzToHDFKsVUfKhJxScoGqfeZGxqLGoUkipTqUcttQhiUriLsFMZSVG9ybmFkbw==')) then
-                        if (tick() - Tornado_Time) < (Runtime.Tornado:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('KWBoCjNFoqSlTwRAjCtMTMMwYfBXajPQomxJrKiYOrSEOohsVXLYXMsVG9ybmFkb1RpbWU=')) or 1) + 0.314159 then
+                    if Runtime:FindFirstChild('Tornado') then
+                        if (tick() - Tornado_Time) < (Runtime.Tornado:GetAttribute("TornadoTime") or 1) + 0.314159 then
                         return
                         end
                     end
@@ -903,11 +894,11 @@ module:AddToggle({
                         return
                     end
 
-                    if Ball:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ISIGOYmDLVmeyEazciGFTaJLGfYkNrxSOAKKjolwTgPiIkVmNjscLDNQ29tYm9Db3VudGVy')) then
+                    if Ball:FindFirstChild("ComboCounter") then
                         return
                     end
 
-                    local Singularity_Cape = Player.Character.PrimaryPart:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('rtRJMtjOixmuwBYvbTDnSdpiFTfFQyuosCfmCACiNXjcbwBhCvjlyIyU2luZ3VsYXJpdHlDYXBl'))
+                    local Singularity_Cape = Player.Character.PrimaryPart:FindFirstChild('SingularityCape')
                     if Singularity_Cape then
                         return
                     end 
@@ -950,16 +941,16 @@ module:AddToggle({
                 end
             end)
         else
-            if Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('FjpTUmWmYRsaOEgdPiOPFayaqTCotGYIRJIhNkMHwIBNbkFymXmOzvgQXV0byBQYXJyeQ==')] then
-                Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('DXQVvAbjHWeMgJegGeOFpIFTunQkhcZzWThnGxZoczbVPpiGyqBmvKoQXV0byBQYXJyeQ==')]:Disconnect()
-                Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('freqllWUsrNJsMxvOJJbFeIcheOzjLoKhZLHgQeVcvJGrQLPjuqHhnHQXV0byBQYXJyeQ==')] = nil
+            if Connections_Manager['Auto Parry'] then
+                Connections_Manager['Auto Parry']:Disconnect()
+                Connections_Manager['Auto Parry'] = nil
             end
         end
     end
 })
 
 module:AddSlider({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('dyEAZTbmIbbUxVUYUvUqyxMTItrmYFsLPLeOWhNqvPAXWgSLmUeIiwUUGFycnkgQWNjdXJhY3k='),
+	Name = "Parry Accuracy",
 	Min = 1,
 	Max = 100,
 	Default = 100, -- optional, defaults to Min if not set
@@ -969,73 +960,73 @@ module:AddSlider({
 })
 
 local parryTypeMap = {
-    [cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('mwzWztcbEXudbosjuqCwRUtiNljeliIFijEKSChgsBrrBeEISWsMmmUQ2FtZXJh')] = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('SPcLcPXnnJubmYEDQzlJrqshgzAAhicHbktkdNBLdLhjuuBFHkwoJbMQ2FtZXJh'),
-    [cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('BohSsQPDOLitvZrMmXbvvliGQEFZQrWpyTYjyivJZdGfgiwQUEjuQyRUmFuZG9t')] = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('fUCJSKTryfKkbgMsmPKuNKJTFkSIZiDvlHAGdYnrvThRRxMkqtNcEgHUmFuZG9t'),
-    [cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('sUWvnuafKQkDDPYSfKandOCZWbQLDmXUsOFXOyFqPxwYnoFPjblerFHQmFja3dhcmRz')] = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('gJsxtWcenzlnOgNtHTRjKSxIdcnETpJfcjhaycSrmFibHYqiNjLvWnvQmFja3dhcmRz'),
-    [cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('RNfBEnPCPJKwqbBTwRhrgXPTYbXpJSEJHiYsWcervRajAsmvUdfWVPuU3RyYWlnaHQ=')] = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('RdgbMOfWULabIQDJQCSUYpPQLByEvXyxuFWWYDHYLYgwYXxgGAKPoIZU3RyYWlnaHQ='),
-    [cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('fxxnfttqymmmfAXvnlPTOMDQNqkbLUVTYMAHIMJzmBoneBXqJeetUDgSGlnaA==')] = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ougrxQwFpdVcPlBLnzqpJxQdRMWIckscvdJSsHDZhgaVRpFjSRHqwezSGlnaA=='),
-    [cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('jlBNswznhUIRDemsLzuJHuScoElrBcPamsBNZHOsbugclwNZhlcaqTzTGVmdA==')] = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ZDtYzvAVeFhhDzWPFPnSLjRySccKUfWJXHdSnnCOwnFQqvIFUtCXEMYTGVmdA=='),
-    [cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('YiKZKtZPoTiiXKcUJefNWmTTzCTeVMtzVXnQlefJReurcNGkeuNsIyoUmlnaHQ=')] = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('VRZfpbfrbuakfUyXVFRtExwymaRiJbcdZeQKwjtSzmOqCgrLBbfvmLYUmlnaHQ='),
-    [cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('hgTxfSAxVuDOaNCJCiDPQZbXgvMaFEHnAEFPjmvlrlpxzyfSkNLsqJQUmFuZG9tIFRhcmdldA==')] = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('BPTioMbOyjKIdbPYUahBWBLFWNhRsDjySoFdUYnEpfRBHgfGOMjELHYUmFuZG9tVGFyZ2V0')
+    ["Camera"] = "Camera",
+    ["Random"] = "Random",
+    ["Backwards"] = "Backwards",
+    ["Straight"] = "Straight",
+    ["High"] = "High",
+    ["Left"] = "Left",
+    ["Right"] = "Right",
+    ["Random Target"] = "RandomTarget"
 }
 
 module:AddDropdown({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('hUNZysERthMbzCrVVCwZwKSXjkzlFeAjWdIiWaetbbHTGMYeZzsYPkmQ3VydmUgVHlwZQ=='),
+	Name = "Curve Type",
 	Values = {
-        cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('WuqOgZoYkyBbGkKBTeZNsaCQBoeJOGMxsfrxKvjoUgeDwQzObeEotHqQ2FtZXJh'),
-        cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('OPuJFDrCKrBpbnHXAWuXRbkmwMkqcheCFFjvNEgXGTlgghfIcgfFjjlUmFuZG9t'),
-        cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('CpadQgWNiMWsoFUmVCcWiHohRbdhulprnJeHyVLJFOQjvwsRbnrPGYvQmFja3dhcmRz'),
-        cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('xpNzmejDvIsjeArLOgcfwPBgREkqTcqFXBbMcZRXoELrfikuXqxetSGU3RyYWlnaHQ='),
-        cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('PzZuTOKkGKvPmJDnQkqMpQrcoGLvzqGZNaFoGoVVYrPXIaUsRJMImkHSGlnaA=='),
-        cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('kxLMGKYCdEjnxxOCDKlEGKmJQxbjGCVIhkJybDzrQzwSiYrBCpjMLOoTGVmdA=='),
-        cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('JumtEDscnHgKZkwFKcPhcTjPRTIDfQWqVSImsxtaFyrpXBeZIDYIVbkUmlnaHQ='),
-        cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('AYnYzTNzdqUlZDAKbwBNqYdwrrucnMnLuObbXwYDretunymTAIevuldUmFuZG9tIFRhcmdldA==')
+        "Camera",
+        "Random",
+        "Backwards",
+        'Straight',
+        'High',
+        'Left',
+        'Right',
+        'Random Target'
     },
 	Multi = false,
-	Default = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('hPCOhYDQracjYhzkzGhtchWrPmJuyJzVloojqvBpXjntvdjODUFwwaEQ2FtZXJh'),
+	Default = "Camera",
 	Callback = function(value)
         Selected_Parry_Type = parryTypeMap[value] or value
     end
 })
 
 module:AddToggle({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('sSqDMaJPEtgLyVuAncapSZMrYrXnHVNKGAZTBRfjYysQwYPWqwbPBNGUmFuZG9tIFBhcnJ5IEFjY3VyYWN5'),
+	Name = "Random Parry Accuracy",
 	Callback = function(value)
         getgenv().RandomParryAccuracyEnabled = value
     end
 })
 
 module:AddToggle({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('jYzAUBUrBijmWUgAkYeluvKNzRMMimWwQrDRVoXCkixqWgNDtcYKhtLSW5maW5pdHkgRGV0ZWN0aW9u'),
+	Name = "Infinity Detection",
 	Callback = function(value)
         getgenv().InfinityDetection = value
     end
 })
 
 module:AddToggle({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('aVuUHtQLXUcNVxJuTQeOvuEqCFayritCZSfaLFqjuZhaGvlrrhqRmFrS2V5cHJlc3M='),
+	Name = "Keypress",
 	Callback = function(value)
         getgenv().AutoParryKeypress = value
     end
 })
 
 local SpamParry = Blatant:AddSection({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('GZFbnjFdqcHwIqUUoXFYItuRuaZVnvQIDXYByPCcvYaadFBGljExsijQXV0byBTcGFtIFBhcnJ5'),
-	Position = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('syKuRfiHHiduaVCSAiPdyENFibxGvsmLcROBhKXfscTkSvOFgAbdtBjcmlnaHQ='),
+	Name = "Auto Spam Parry",
+	Position = "right",
 });
 
 SpamParry:AddToggle({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('aVniwDZtPpGsRZPwxvkDaazjxWelYOCVHMdYYatmnCkMhJpdeCxiqxIQXV0byBTcGFtIFBhcnJ5'),
+	Name = "Auto Spam Parry",
 	Callback = function(value)
         if value then
-            Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('dyWYgkUWyEclHpNztdjdibYOLxQOBtAdBxwAtIgreQGaLSLHKFhqPxFQXV0byBTcGFt')] = RunService.PreSimulation:Connect(function()
+            Connections_Manager['Auto Spam'] = RunService.PreSimulation:Connect(function()
                 local Ball = Auto_Parry.Get_Ball()
 
                 if not Ball then
                     return
                 end
 
-                local Zoomies = Ball:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('hWrNnNaXMdfuPeNDqglhkgWozSkwqHgLWHvbQiETpblfHWmkoFjTlxlem9vbWllcw=='))
+                local Zoomies = Ball:FindFirstChild('zoomies')
 
                 if not Zoomies then
                     return
@@ -1043,11 +1034,11 @@ SpamParry:AddToggle({
 
                 Auto_Parry.Closest_Player()
 
-                local Ping = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('mXfBqXHvXgcnroNopKiUVSGrRnwyitLkHykSfKAEoGgpysFbaKTblKOU3RhdHM=')).Network.ServerStatsItem[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('YZiyxvqHZSsCnESiGmOBCvqNmiHcJYUBdWkzIVOIxlWTcEKHajnbqYBRGF0YSBQaW5n')]:GetValue()
+                local Ping = game:GetService('Stats').Network.ServerStatsItem['Data Ping']:GetValue()
 
                 local Ping_Threshold = math.clamp(Ping / 10, 1, 16)
 
-                local Ball_Target = Ball:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('RUVpQNKZfQzEHIgUrEWGaPwIhoeVTDNpqCiZYmTdRPaCHAqOzkRAnNXdGFyZ2V0'))
+                local Ball_Target = Ball:GetAttribute('target')
 
                 local Ball_Properties = Auto_Parry:Get_Ball_Properties()
                 local Entity_Properties = Auto_Parry:Get_Entity_Properties()
@@ -1076,7 +1067,7 @@ SpamParry:AddToggle({
                     return
                 end
                 
-                local Pulsed = Player.Character:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('qHwwnFbIGInOtrMRsLaGtzjDSMgaTbNQMSDSzvpfJNQBykkpWYzaZVfUHVsc2Vk'))
+                local Pulsed = Player.Character:GetAttribute('Pulsed')
 
                 if Pulsed then
                     return
@@ -1097,29 +1088,29 @@ SpamParry:AddToggle({
                 end
             end)
         else
-            if Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('YBJhIECNpYHNjhaHssJblXzFQvkPrSrdZlwuHSgtSBGkGiaUxNPwjMPQXV0byBTcGFt')] then
-                Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('YlljrKJsCaWytxMAcudBlidSyoBswsDAcHrpiXePMJUNTKNUhXYvlkUQXV0byBTcGFt')]:Disconnect()
-                Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('DsdQcQJIPHhSmMaePThXCetoLdZcdpdEamRNOMkQjnwMtbcMIAYcOhVQXV0byBTcGFt')] = nil
+            if Connections_Manager['Auto Spam'] then
+                Connections_Manager['Auto Spam']:Disconnect()
+                Connections_Manager['Auto Spam'] = nil
             end
         end
     end
 })
 
 SpamParry:AddDropdown({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('rGcWUEcFHwwhaHQEjffzRnJdrrKWGfxXNUpOZhzCXdOMQdtObHSdmAoUGFycnkgVHlwZQ=='),
+	Name = "Parry Type",
 	Values = {
-        cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('KoCUXZpjCpMpJNbRPYJqrCvTFYjYYeMqcALdyaCGfOkSdaNgPVsAmtgTGVnaXQ='),
-        cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('SRxdHEsLysBhfDIUGFGWkkYvaCqKQSOzJCyOLDXGWiZsyckDfJlSqeIQmxhdGFudA==')
+        'Legit',
+        'Blatant'
     },
 	Multi = false,
-	Default = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('nMArswbYOErbWdJCpNEYUuTIqvWkfHgMbNWnlBPaLFCVrEwvyDsCDclTGVnaXQ='),
+	Default = "Legit",
 	Callback = function(value)
 
     end
 })
 
 SpamParry:AddSlider({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('NzekHVSKRbLVBSEafwtfqPYqNDRbdDHJLnCKatNrRdWskxqUuDizTZxUGFycnkgVGhyZXNob2xk'),
+	Name = "Parry Threshold",
 	Min = 1,
 	Max = 3,
 	Default = 2.5, -- optional, defaults to Min if not set
@@ -1130,17 +1121,17 @@ SpamParry:AddSlider({
 
 if not isMobile then
     SpamParry:AddToggle({
-        Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('dmYjSiZNlzMGXXYXIYIjcaRrdxoilrnbTPEeGANEqgovXTaXFydxLXiQW5pbWF0aW9uIEZpeA=='),
+        Name = "Animation Fix",
         Callback = function(value)
             if value then
-                Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('yKzFsXjoyMkacQRIVsdFHduBKXtcKEzfjylysabSNkRmmDeBDMpwKIJQW5pbWF0aW9uIEZpeA==')] = RunService.PreSimulation:Connect(function()
+                Connections_Manager['Animation Fix'] = RunService.PreSimulation:Connect(function()
                     local Ball = Auto_Parry.Get_Ball()
 
                     if not Ball then
                         return
                     end
 
-                    local Zoomies = Ball:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('PfPtOnBCDqqXZSpVFJekulAKLIYqOUQBZawGpMPmivXpfpvZevlliEDem9vbWllcw=='))
+                    local Zoomies = Ball:FindFirstChild('zoomies')
 
                     if not Zoomies then
                         return
@@ -1148,11 +1139,11 @@ if not isMobile then
 
                     Auto_Parry.Closest_Player()
 
-                    local Ping = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('GICbULFQeOaEEcuTuxHJjYrZKLQjwSVqTJXoMVcDpiJLQFNBBsgxgGaU3RhdHM=')).Network.ServerStatsItem[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('heDpZzyHeoaQLmzTEAPBPsdYQKICSMGhJJfYYoLAHLwggePFeobMHzORGF0YSBQaW5n')]:GetValue()
+                    local Ping = game:GetService('Stats').Network.ServerStatsItem['Data Ping']:GetValue()
 
                     local Ping_Threshold = math.clamp(Ping / 10, 10, 16)
 
-                    local Ball_Target = Ball:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('KbLECTXaEgtYkdjWQPokWoYnMssFQrjKpwnrIOAQwbCJPbVpIyifUYWdGFyZ2V0'))
+                    local Ball_Target = Ball:GetAttribute('target')
 
                     local Ball_Properties = Auto_Parry:Get_Ball_Properties()
                     local Entity_Properties = Auto_Parry:Get_Entity_Properties()
@@ -1181,7 +1172,7 @@ if not isMobile then
                         return
                     end
                     
-                    local Pulsed = Player.Character:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('FZWqKtxJSDeepYEFsDZVqMvavfvDpXxvHSkTQsXDuhyXsTpsNAHLXXwUHVsc2Vk'))
+                    local Pulsed = Player.Character:GetAttribute('Pulsed')
 
                     if Pulsed then
                         return
@@ -1198,9 +1189,9 @@ if not isMobile then
                     end
                 end)
             else
-                if Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('cJCAlbYKwcEwoEGqAReSKQumUBrloUpojFITbIlMfaaBOkXaIbVyzfNQW5pbWF0aW9uIEZpeA==')] then
-                    Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('QTxvZrYQvIuqEkWABbsuReGwMVwZzHthZDkLPKpykdNebkbhOvgyPQrQW5pbWF0aW9uIEZpeA==')]:Disconnect()
-                    Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('qCEfEDAAEHgIYRGoDWNGWpHGALjztTdXVVgdKvgAsDMgrdGIPjwYOjvQW5pbWF0aW9uIEZpeA==')] = nil
+                if Connections_Manager['Animation Fix'] then
+                    Connections_Manager['Animation Fix']:Disconnect()
+                    Connections_Manager['Animation Fix'] = nil
                 end
             end
         end
@@ -1208,22 +1199,22 @@ if not isMobile then
 end
 
 SpamParry:AddToggle({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('xFFlXwsXILeEcYoDUVWXfEkrKeUgRtaYOkYZRnJsMlCewBOzdIKzCgUS2V5cHJlc3M='),
+    Name = "Keypress",
     Callback = function(value)
         getgenv().SpamParryKeypress = value
     end
 })
 
 local ManualSpam = Blatant:AddSection({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('bSoWyIgIOaIDVUjtovZmUACSIdGvEZxMoTeTIfgsVovHAufjLfllzTJTWFudWFsIFNwYW0='),
-	Position = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('zBksKcyEmEeSXFByWoSEzfQsYRRzBBplKmImHkaFEddnAkTGkhcLIuwbGVmdA=='),
+	Name = "Manual Spam",
+	Position = "left",
 });
 
 ManualSpam:AddToggle({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('bWeCgGBNPaIwnnAtoqeHMSZZZmsRYllZAdjuurpqwZnJnUBYZLLahciTWFudWFsIFNwYW0gUGFycnk='),
+	Name = "Manual Spam Parry",
 	Callback = function(value)
         if value then
-            Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('IlZIyBSZjLtmzdYTNsXWOJwakjCmhVEvpoAJBKXKSXQvPRKZAWuLjASTWFudWFsIFNwYW0=')] = RunService.PreSimulation:Connect(function()
+            Connections_Manager['Manual Spam'] = RunService.PreSimulation:Connect(function()
                 if getgenv().spamui then
                     return
                 end
@@ -1236,9 +1227,9 @@ ManualSpam:AddToggle({
 
             end)
         else
-            if Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('XHnzupvQpouCUxrUmsIkLGnRnAbQxQlVwHkncqdlTxADNljiRVfCtymTWFudWFsIFNwYW0=')] then
-                Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('rLNhPKBvVrkKDIQzkdbVxQWjbjtNaEzUUnIkaspYXYDxYFvlaSFPRJFTWFudWFsIFNwYW0=')]:Disconnect()
-                Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('gCWqwGTpNAGUJltEjMDZrhMmuWuLAbmEmVasmMrmmjOzUYSwDeDavGaTWFudWFsIFNwYW0=')] = nil
+            if Connections_Manager['Manual Spam'] then
+                Connections_Manager['Manual Spam']:Disconnect()
+                Connections_Manager['Manual Spam'] = nil
             end
         end
     end
@@ -1246,18 +1237,18 @@ ManualSpam:AddToggle({
 
 if isMobile then
     ManualSpam:AddToggle({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('zKzvbtTVDnBTwcwAnzdIeLemwBxgOuHnYRwljCIEDcfadtpBciqwmfcVUk='),
+	Name = "UI",
 	Callback = function(value)
         getgenv().spamui = value
 
         if value then
-            local gui = Instance.new(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('BsfieImHkCMsXqQholLPZLxsUjbrkOCyiyWGPDKYZDThrqetqTmortQU2NyZWVuR3Vp'))
-            gui.Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('jOGlYQMzsbNlGdMnbHSzLRSXPhdkTRSAmBGrfErGtpPcXsFiSuxgeRVTWFudWFsU3BhbVVJ')
+            local gui = Instance.new("ScreenGui")
+            gui.Name = "ManualSpamUI"
             gui.ResetOnSpawn = false
             gui.Parent = game.CoreGui
 
-            local frame = Instance.new(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ZvdVZFEhgAgVeKSjCoHLhHikkSdEAOKoERsOfGPjhTUNyMzjPvVIvZHRnJhbWU='))
-            frame.Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('fTDMYVnBylZvfcnmxeaFeHPpkKDVRJtxRAoczNfYCIQCOjdnSYEEAleTWFpbkZyYW1l')
+            local frame = Instance.new("Frame")
+            frame.Name = "MainFrame"
             frame.Position = UDim2.new(0, 20, 0, 20)
             frame.Size = UDim2.new(0, 200, 0, 100)
             frame.BackgroundColor3 = Color3.fromRGB(10, 10, 50)
@@ -1267,18 +1258,18 @@ if isMobile then
             frame.Draggable = true
             frame.Parent = gui
 
-            local uiCorner = Instance.new(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('CYNfwYlRsucvOzeULJbJdsOuqXPsFLdFFhkGXCRGysZTxHsdzrSItaiVUlDb3JuZXI='))
+            local uiCorner = Instance.new("UICorner")
             uiCorner.CornerRadius = UDim.new(0, 12)
             uiCorner.Parent = frame
 
-            local uiStroke = Instance.new(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('kqfwaQZPEZovzgZaCeTsgWwPtbnBLUfCozxSsAMjRkoXJjKTnKzTBWmVUlTdHJva2U='))
+            local uiStroke = Instance.new("UIStroke")
             uiStroke.Thickness = 2
             uiStroke.Color = Color3.new(0, 0, 0)
             uiStroke.Parent = frame
 
-            local button = Instance.new(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ckJmIBiwfkYJOVvmtDOVwxYIHmNtoPHDueXDtjXWXYwbmfuDenXZQMrVGV4dEJ1dHRvbg=='))
-            button.Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('jamnAgguAOHWklTIWSjwotbWiFPeOxwkJRjULcZeOLOlNEmbUOzxaFmQ2xhc2hNb2RlQnV0dG9u')
-            button.Text = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('EDIGsACOTcChntZDQwOyyzmCzXCVxkRivIMSeZXAeJHfrUIwVaYJowUQ2xhc2ggTW9kZQ==')
+            local button = Instance.new("TextButton")
+            button.Name = "ClashModeButton"
+            button.Text = "Clash Mode"
             button.Size = UDim2.new(0, 160, 0, 40)
             button.Position = UDim2.new(0.5, -80, 0.5, -20)
             button.BackgroundTransparency = 1
@@ -1292,28 +1283,28 @@ if isMobile then
 
             local function toggle()
                 activated = not activated
-                button.Text = activated and cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('TVBHbeiRiMzgqHxYbHYeUoCJWBjLlnxxvZbqGyQHNRBmDcDeSbuslVYU3RvcA==') or cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('BhrcQZhMfcrACkODYvPbFixQPyIGUwNfzmbukbkjFmDItQFPJdTLzVwQ2xhc2ggTW9kZQ==')
+                button.Text = activated and "Stop" or "Clash Mode"
                 if activated then
-                    Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('gYtWwZrZnaiAAucHjdtONlNQMgiGbsRKqOMGwbrJfMIGZIzrFbhXAeSTWFudWFsIFNwYW0gVUk=')] = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('SOcWVApXwoHahLRsdNnghcIlpySldOvOGiXBnUqcbeftyVpRDjhglkuUnVuU2VydmljZQ==')).Heartbeat:Connect(function()
+                    Connections_Manager['Manual Spam UI'] = game:GetService("RunService").Heartbeat:Connect(function()
                         Auto_Parry.Parry(Selected_Parry_Type)
                     end)
                 else
-                    if Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('MKBFGHUpvyktfodmOsxMpzOhuudwuxvohkpnwTRSUwHhIclNyPxfOETTWFudWFsIFNwYW0gVUk=')] then
-                        Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('bKARcjmVeXaZmDoSDWzcIRUvhmTBXNEmFDXqLrVxIDwrKFmkMMLsrezTWFudWFsIFNwYW0gVUk=')]:Disconnect()
-                        Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('UTlxmzKSXpCdxRlIrGYhlJaemuPsgzNntxmFZInEIHcBUGSNbPTEnxqTWFudWFsIFNwYW0gVUk=')] = nil
+                    if Connections_Manager['Manual Spam UI'] then
+                        Connections_Manager['Manual Spam UI']:Disconnect()
+                        Connections_Manager['Manual Spam UI'] = nil
                     end
                 end
             end
 
             button.MouseButton1Click:Connect(toggle)
         else
-            if game.CoreGui:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('AyMNZPAVtsaQkfcYZGeoPXdRxYCwzCXqIuMlHmStYraZSLtHMqGCfTwTWFudWFsU3BhbVVJ')) then
-                game.CoreGui:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('LplDuJWLqSUOekvSfncqQXAODZPWjashFrPOoPqeMnMcLqwCzXszSxwTWFudWFsU3BhbVVJ')):Destroy()
+            if game.CoreGui:FindFirstChild("ManualSpamUI") then
+                game.CoreGui:FindFirstChild("ManualSpamUI"):Destroy()
             end
 
-            if Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('VMxNhQAHTzWUOLsCMQyxCjjkXGhhmksYKaLBwOGLrzdNGQIeYcCKYvaTWFudWFsIFNwYW0gVUk=')] then
-                Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('wyVIEjKGHYHiSLBLttsXlvnksWXqaYSOyeyBlxuVfaCFHHqexmiZRdHTWFudWFsIFNwYW0gVUk=')]:Disconnect()
-                Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('YZknDFqLXuXjilshcSSpIRxxscseNaTSuIPMyVuZmuHOiPZNGoYjcyOTWFudWFsIFNwYW0gVUk=')] = nil
+            if Connections_Manager['Manual Spam UI'] then
+                Connections_Manager['Manual Spam UI']:Disconnect()
+                Connections_Manager['Manual Spam UI'] = nil
             end
         end
     end
@@ -1321,22 +1312,22 @@ if isMobile then
 end
 
 ManualSpam:AddToggle({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('eDYCCCWfnpBxlbMZxYhchunvrDscIHVzDESDisnEnpxdQfPOavcftwOS2V5cHJlc3M='),
+    Name = "Keypress",
     Callback = function(value)
         getgenv().ManualSpamKeypress = value
     end
 })
 
 local Triggerbot = Blatant:AddSection({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('BGMdkPCbdqWEkKtrpWLoZlxRoblKoVGXMaWWRBuJQehvrtChhLBwEhOVHJpZ2dlcmJvdA=='),
-	Position = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ydAilUWccbMyioLuEIPgGGRczRXYMBmLYOPjtUIySjcdvKcPJGKqvQTcmlnaHQ='),
+	Name = "Triggerbot",
+	Position = "right",
 });
 
 Triggerbot:AddToggle({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('vQMoaQjidKDAPPyCPhIFLOKsoBJPxHeiNHMYfWHzTxlXiFvLyfOiCdtVHJpZ2dlcmJvdA=='),
+    Name = "Triggerbot",
     Callback = function(value)
         if value then
-            Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('afteyMVBoQrHmdfFzZREsMesybQSRWQwGXkfXiToWZVCnfPISVooFhAVHJpZ2dlcmJvdA==')] = RunService.PreSimulation:Connect(function()
+            Connections_Manager['Triggerbot'] = RunService.PreSimulation:Connect(function()
                 local Balls = Auto_Parry.Get_Balls()
     
                 for _, Ball in pairs(Balls) do
@@ -1344,7 +1335,7 @@ Triggerbot:AddToggle({
                         return
                     end
                     
-                    Ball:GetAttributeChangedSignal(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('rzjYeVWvrDiFnaIysjvVCFFQUSuTRFKbLIlEJjPUDAshTYXnkMOXjNqdGFyZ2V0')):Once(function()
+                    Ball:GetAttributeChangedSignal('target'):Once(function()
                         TriggerbotParried = false
                     end)
 
@@ -1352,8 +1343,8 @@ Triggerbot:AddToggle({
                         return
                     end
 
-                    local Ball_Target = Ball:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('dQDRVpzZaEXOyTVPELgUhfKbpgYVVvnFFAOPStImDlXWBrAFYJtWGHAdGFyZ2V0'))
-                    local Singularity_Cape = Player.Character.PrimaryPart:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('xTDfHRsfaFeIvkByCybKXAuiiLsJqyQOhxyOImWdVZlrSOIopKHFZShU2luZ3VsYXJpdHlDYXBl'))
+                    local Ball_Target = Ball:GetAttribute('target')
+                    local Singularity_Cape = Player.Character.PrimaryPart:FindFirstChild('SingularityCape')
         
                     if Singularity_Cape then 
                         return
@@ -1380,49 +1371,49 @@ Triggerbot:AddToggle({
 
             end)
         else
-            if Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('lUhwupVOcOGDOVGrPhIrhfFMwBVKpRCLJXmJFbhPowpbrlfXVJMbeQEVHJpZ2dlcmJvdA==')] then
-                Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('VNFypJegBBVPMzOKQFPUTGEvGWROhYaKjmFMGluJhviTffbxaHpfPgDVHJpZ2dlcmJvdA==')]:Disconnect()
-                Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('xFVjBvqvmLVwKQmlNwNCMFotEcJNxYaDLzwzalanBmNXXgAHTUIynXQVHJpZ2dlcmJvdA==')] = nil
+            if Connections_Manager['Triggerbot'] then
+                Connections_Manager['Triggerbot']:Disconnect()
+                Connections_Manager['Triggerbot'] = nil
             end
         end
     end
 })
 
 Triggerbot:AddToggle({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('MojcnLRAnDpHlpZljhWgXXfvPjuMoxKNtMCAXpUOdCMbBRAADhDKNslSW5maW5pdHkgRGV0ZWN0aW9u'),
+    Name = "Infinity Detection",
     Callback = function(value)
         getgenv().TriggerbotInfinityDetection = value
     end
 })
 
 Triggerbot:AddToggle({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('BzAvbTHQuXaLEMwDMlikzexLnVEjaYIPYIJtQpZVpvfZVnnjwfSiURpS2V5cHJlc3M='),
+    Name = "Keypress",
     Callback = function(value)
         getgenv().TriggerbotKeypress = value
     end
 })
 
 local LobbyAP = Blatant:AddSection({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('bGdGRCQeJQkameDBKVRMRQwvbHATaDOBGLnMRbjjPyQEUZQoxZcrxSXTG9iYnkgQXV0byBQYXJyeQ=='),
-	Position = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('tOjeIvuJxmspGBcpsFwCDulqysqgyodzuwkiGgJKtlEEfqNyQcfuhsEbGVmdA=='),
+	Name = "Lobby Auto Parry",
+	Position = "left",
 });
 
 LobbyAP:AddToggle({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('vuPUbMUqbluJPeZYrwRMoUoJLdToefFtqfqSunaFsDUPNoirYAyAlHNTG9iYnkgQXV0byBQYXJyeQ=='),
+    Name = "Lobby Auto Parry",
     Callback = function(value)
         if value then
-            Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('aheBpuFYNHofIdVPdvGHxoHOrTnWJzrWbCkSJvpyFmtIphGaDBdLnecTG9iYnkgQVA=')] = RunService.Heartbeat:Connect(function()
+            Connections_Manager['Lobby AP'] = RunService.Heartbeat:Connect(function()
                 local Ball = Auto_Parry.Lobby_Balls()
                 if not Ball then
                     return
                 end
 
-                local Zoomies = Ball:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('dBuMpYiaqoMzbTZriVDhdPMdYACQEdmdYexyxlZpIgIBTezrDTXZJSUem9vbWllcw=='))
+                local Zoomies = Ball:FindFirstChild('zoomies')
                 if not Zoomies then
                     return
                 end
 
-                Ball:GetAttributeChangedSignal(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('uqxDTANpHfNvINueweNloTtALCdvvcpnaalugZpOkysOOjpWVQqNlKGdGFyZ2V0')):Once(function()
+                Ball:GetAttributeChangedSignal('target'):Once(function()
                     Training_Parried = false
                 end)
 
@@ -1430,12 +1421,12 @@ LobbyAP:AddToggle({
                     return
                 end
 
-                local Ball_Target = Ball:GetAttribute(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('uJiYWSLGXKYbfGRyMLANDtqIVfxguNuHeuzkjcJkprqFOXWFqEJjfEVdGFyZ2V0'))
+                local Ball_Target = Ball:GetAttribute('target')
                 local Velocity = Zoomies.VectorVelocity
                 local Distance = Player:DistanceFromCharacter(Ball.Position)
                 local Speed = Velocity.Magnitude
 
-                local Ping = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('hAOBpwvlBFZLVpKBubZvZVouIbRdcEVfqUiqMQZPBAZwCGkDhceYDHFU3RhdHM=')).Network.ServerStatsItem[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('TUaLKxNvEMkWWOorQJDcavSJRfGMPKyJNSzyoDZAVIKVUkPNFEkeQwZRGF0YSBQaW5n')]:GetValue() / 10
+                local Ping = game:GetService('Stats').Network.ServerStatsItem['Data Ping']:GetValue() / 10
                 local LobbyAPcappedSpeedDiff = math.min(math.max(Speed - 9.5, 0), 650)
                 local LobbyAPspeed_divisor_base = 2.4 + LobbyAPcappedSpeedDiff * 0.002
 
@@ -1462,16 +1453,16 @@ LobbyAP:AddToggle({
                 Training_Parried = false
             end)
         else
-            if Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('KHxEpZtYtwelRaqJdJmzMgNirMAdiHYiKBgNOwdHkxvHaRTTbSdweirTG9iYnkgQVA=')] then
-                Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('qIlpdjVpfkLWUyPankUzNPDTVtLtjjOsgnRcYzoSDlHxvrfqWlmZXUXTG9iYnkgQVA=')]:Disconnect()
-                Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('duXPpOSwzGeebZwjYruSMHeuXLdjXkIsZtQaVkLPvWCuHhMfpKtHtpTTG9iYnkgQVA=')] = nil
+            if Connections_Manager['Lobby AP'] then
+                Connections_Manager['Lobby AP']:Disconnect()
+                Connections_Manager['Lobby AP'] = nil
             end
         end
     end
 })
 
 module:AddToggle({
-    	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('alKEgcLvBlMpGgeXspmyDiToyugqnqRGDAFanrOJmRcSWSeihREckvNUGhhbnRvbSBEZXRlY3Rpb24='),
+    	Name = "Phantom Detection",
 	Min = 1,
 	Max = 100,
 	Default = 100,
@@ -1481,7 +1472,7 @@ module:AddToggle({
 })
 
 LobbyAP:AddSlider({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('hIijQBZVQiglZhXxmJoIujruLleBgMyZqFSbHmvahMSoiakJDCyhnUZUGFycnkgQWNjdXJhY3k='),
+	Name = "Parry Accuracy",
 	Min = 1,
 	Max = 100,
 	Default = 100,
@@ -1491,50 +1482,50 @@ LobbyAP:AddSlider({
 })
 
 LobbyAP:AddToggle({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('IABVaCWTWuAHXUosdPnoYqpEzZVNhaBegJbyhnIxPIRhkPJIIXhJTDCUmFuZG9tIFBhcnJ5IEFjY3VyYWN5'),
+    Name = "Random Parry Accuracy",
     Callback = function(value)
         getgenv().LobbyAPRandomParryAccuracyEnabled = value
     end
 })
 
 LobbyAP:AddToggle({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('vHLwTKUpzMTuuIEmCXzLkDBfqJMfMOaQnQXavVdpUzpBxaPsMKrtNdCS2V5cHJlc3M='),
+    Name = "Keypress",
     Callback = function(value)
         getgenv().LobbyAPKeypress = value
     end
 })
 
 local Strafe = player:AddSection({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('vFbxvMNHtviAzYDmHIMNcMtntvcrqpPHkCPPvgRtBjuvDXBGAnwLqPGU3RyYWZl'),
-	Position = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('BCAtmUwThnDXMlkqAKmwmvUWvsVdxoUgheKqDCHuQBPNjzKOqKoTVaHbGVmdA=='),
+	Name = "Strafe",
+	Position = "left",
 });
 
 Strafe:AddToggle({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('hrELVXPKZHOdShMGDevRzqwmTRQfxQbWkKshuMVLPYNRGPzcQPlEyGIU3RyYWZl'),
+    Name = "Strafe",
     Callback = function(value)
         if value then
-            Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ioDbWoYkrduikHkbUAaShbUxWjFGMxtknRLdzxIyPWMmXjmyWOTiMJWU3RyYWZl')] = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('GDPVWlTwpXPvNuGRRMbpNmyHQZOLwMqyNdHQgecAHFeqZHWpzgRoFlPUnVuU2VydmljZQ==')).PreSimulation:Connect(function()
+            Connections_Manager['Strafe'] = game:GetService("RunService").PreSimulation:Connect(function()
                 local character = game.Players.LocalPlayer.Character
-                if character and character:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('BsbTSeqXDpdXVqMkraaGYPBbsNUuEpwyTMKHGNJqHzHIbDOfwdjkBdxSHVtYW5vaWQ=')) then
+                if character and character:FindFirstChild("Humanoid") then
                     character.Humanoid.WalkSpeed = StrafeSpeed
                 end
             end)
         else
             local character = game.Players.LocalPlayer.Character
-            if character and character:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('fvNtFNmXElzpSRahkxFaJmHVUNLuiQVKvobQowBqRIjzNDKrcbUETLOSHVtYW5vaWQ=')) then
+            if character and character:FindFirstChild("Humanoid") then
                 character.Humanoid.WalkSpeed = 36
             end
             
-            if Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('sPLFTbdJuDBlNrcSYHkphaNQsSSjqASmCmyLTYDfaYEQrexyLbQXMimU3RyYWZl')] then
-                Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('djTjdFMNnDKSLuLnUtZzyDVjGvwQpjQOkfIZKMjWbILMtQfLdthNDmyU3RyYWZl')]:Disconnect()
-                Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('yjHCKUujLaSvJLxRryRdtxgDQXqxzkoLlRgeMTrmMXkwPcIzZBHpRpyU3RyYWZl')] = nil
+            if Connections_Manager['Strafe'] then
+                Connections_Manager['Strafe']:Disconnect()
+                Connections_Manager['Strafe'] = nil
             end
         end
     end
 })
 
 Strafe:AddSlider({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('SJYzNaCMfeMqCGNwNfUduXEIQgCvlCqrgRELuooZdcSjKhtqJXcSqxeU3BlZWQ='),
+	Name = "Speed",
     Min = 36,
 	Max = 200,
 	Default = 36,
@@ -1544,19 +1535,19 @@ Strafe:AddSlider({
 })
 
 local Spinbot = player:AddSection({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('kchJxxIaydPAEPzfmQinAdxEeUAetpWqeZXypYhJjgXSsRAWJSlfqIqU3BpbmJvdA=='),
-	Position = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('VJgcfMqvkrTtFbyAAihhIjkZrTVaWdFRkztulvtMZfnSmDYYWmXHzgycmlnaHQ='),
+	Name = "Spinbot",
+	Position = "right",
 });
 
 Spinbot:AddToggle({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('oBWRWJDbFcsvwUzUDxvMgwOngHkzgPOVzkDjzIbYUbiJWoOEwmhNRKHU3BpbmJvdA=='),
+    Name = "Spinbot",
     Callback = function(value)
         getgenv().Spinbot = value
         if value then
             getgenv().spin = true
             getgenv().spinSpeed = getgenv().spinSpeed or 1 
-            local Players = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ASoXrGjTlYSpSHbJejRGWCnGGpfyOYDhSGuUHcTcZUmbLxPhmqdFeHCUGxheWVycw=='))
-            local RunService = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('nARixtNDniZXTtLHSiFioDbUIfyxtpfgjqsmTtpXNVqMkoYgLkJByJmUnVuU2VydmljZQ=='))
+            local Players = game:GetService("Players")
+            local RunService = game:GetService("RunService")
             local Client = Players.LocalPlayer
 
             
@@ -1564,7 +1555,7 @@ Spinbot:AddToggle({
                 while getgenv().spin do
                     RunService.Heartbeat:Wait()
                     local char = Client.Character
-                    local funcHRP = char and char:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('QQXtZnOOuxLFXPwXbhXqTOCVgDXfiECjwTFVryLSDfMOBHxIyQUzDjSSHVtYW5vaWRSb290UGFydA=='))
+                    local funcHRP = char and char:FindFirstChild("HumanoidRootPart")
                     
                     if char and funcHRP then
                         funcHRP.CFrame *= CFrame.Angles(0, getgenv().spinSpeed, 0)
@@ -1590,7 +1581,7 @@ Spinbot:AddToggle({
 })
 
 Spinbot:AddSlider({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('SbWphYLTRIFXosGJvwjtSvtgCWOLyWCrPfacBbdDclzVQpmdROIHDsaU3BlZWQ='),
+	Name = "Speed",
     Min = 1,
 	Max = 100,
 	Default = 1,
@@ -1600,22 +1591,22 @@ Spinbot:AddSlider({
 })
 
 local FieldOfView = player:AddSection({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('WfuzYPSaMpoFaiusuMWDkosbbOHCPbdsMwqknFRDooZXFgUhtqrMcYlRmllbGQgb2YgVmlldw=='),
-	Position = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('vBRYpCzSRcWgEIOqGekhIJRQhEKgSbqQjtRoVTEjOdTswymIXDnCpsVbGVmdA=='),
+	Name = "Field of View",
+	Position = "left",
 });
 
 FieldOfView:AddToggle({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('iAsEardYacmetbHqQTfvOWKmWuVpedMZfkoNueYkEkuPDJKFMOYoMyQRmllbGQgb2YgVmlldw=='),
+    Name = "Field of View",
     Callback = function(value)
         getgenv().CameraEnabled = value
-        local Camera = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('zkrqtEJZxHsIssXAGeTGoDaUnZtfRnVnxmcWWyMdeprnZmtgxdWhnFIV29ya3NwYWNl')).CurrentCamera
+        local Camera = game:GetService("Workspace").CurrentCamera
 
         if value then
             getgenv().CameraFOV = getgenv().CameraFOV or 70
             Camera.FieldOfView = getgenv().CameraFOV
             
             if not getgenv().FOVLoop then
-                getgenv().FOVLoop = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('SyAciRrBAowveFUGnHLbWtNoUBJlnaULkBqizpRdeyanoGDxOzQJwpCUnVuU2VydmljZQ==')).RenderStepped:Connect(function()
+                getgenv().FOVLoop = game:GetService("RunService").RenderStepped:Connect(function()
                     if getgenv().CameraEnabled then
                         Camera.FieldOfView = getgenv().CameraFOV
                     end
@@ -1633,55 +1624,55 @@ FieldOfView:AddToggle({
 })
 
 FieldOfView:AddSlider({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('SLfCsoSqnywHeuDfwiPAQOnZPOMzUxsJBymCpNZBegGfkHVDdRHNJWORk9W'),
+	Name = "FOV",
     Min = 50,
 	Max = 150,
 	Default = 70,
 	Callback = function(value)
         getgenv().CameraFOV = value
         if getgenv().CameraEnabled then
-            game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('WlTMpYvMQzwyWYMarRPFbEnhDDvMDOstnxgHNKfMqijcqxGRrXQfGzvV29ya3NwYWNl')).CurrentCamera.FieldOfView = value
+            game:GetService("Workspace").CurrentCamera.FieldOfView = value
         end
     end
 })
 
 local PlayerCosmetics = player:AddSection({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('CiPdMbFiOGpPLCXqvDWDapLYlVJcvrSSipDMhvqrCDidDTWqLMQLofTUGxheWVyIENvc21ldGljcw=='),
-	Position = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('PNWfRLLyZDllvhHyvfRrhqYzANirAmOVdKbOzLsQkOOcEJunIowUmdrcmlnaHQ='),
+	Name = "Player Cosmetics",
+	Position = "right",
 });
 
 _G.PlayerCosmeticsCleanup = {}
 
 PlayerCosmetics:AddToggle({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('vdImqURnxKgvcKDfUHspdRXDzivhaaIJiijxEUcFaJKCbrZOOpyKwwqUGxheWVyIENvc21ldGljcw=='),
+    Name = "Player Cosmetics",
     Callback = function(value)
-        local players = game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('bIPJMZJLJoNekyAeFtAgmDHkKmTVQxWeSEqmUvXHqPdnaalqHQRGoGpUGxheWVycw=='))
+        local players = game:GetService("Players")
         local lp = players.LocalPlayer
 
         local function applyKorblox(character)
-            local rightLeg = character:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('lrmlhtnENOaEOTHIuwpQdaPhjWLDpilPsOHvpvxOdQqGAAgqvSYDRUbUmlnaHRMZWc=')) or character:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ICqtNKLSeCjrIPaJUSFMZaVPwcAQFdyOWzUIprhTZFSnyiiwxOJzjaNUmlnaHQgTGVn'))
+            local rightLeg = character:FindFirstChild("RightLeg") or character:FindFirstChild("Right Leg")
             if not rightLeg then
-                warn(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('zJOvURfVUNsHRdVvNkThtsKIrZvlRDWZWOSZnroCrQAbhHULivLmTcKUmlnaHQgbGVnIG5vdCBmb3VuZCBvbiBjaGFyYWN0ZXI='))
+                warn("Right leg not found on character")
                 return
             end
             
             for _, child in pairs(rightLeg:GetChildren()) do
-                if child:IsA(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('lWHQJIiNvZeIEcpgqLiAkqBmrDBzgEFYOmCToWIRIZRWcYuDyNiZxPCU3BlY2lhbE1lc2g=')) then
+                if child:IsA("SpecialMesh") then
                     child:Destroy()
                 end
             end
-            local specialMesh = Instance.new(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('rzaipCuhZBrtYeSXKzLWCvjPNjUgpzAhUkmdnEGbPIWqwgKlXkEaXWUU3BlY2lhbE1lc2g='))
-            specialMesh.MeshId = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('tNNYLfzDKZEWGRfKhXzEuOonctMfzsnNKGGTEkhCGlodGshqPYgRqzzcmJ4YXNzZXRpZDovLzEwMTg1MTY5Ng==')
-            specialMesh.TextureId = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('QkXBNKQimBXgsVpfJWdGbDRczoduXscjbBpFiwDefVLmvtdhlvBjXCscmJ4YXNzZXRpZDovLzExNTcyNzg2Mw==')
+            local specialMesh = Instance.new("SpecialMesh")
+            specialMesh.MeshId = "rbxassetid://101851696"
+            specialMesh.TextureId = "rbxassetid://115727863"
             specialMesh.Scale = Vector3.new(1, 1, 1)
             specialMesh.Parent = rightLeg
         end
 
         local function saveRightLegProperties(char)
             if char then
-                local rightLeg = char:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('dvAAXkrzFozddawbvZcOeiRTelIeAQbkxmNFnmnYeRtUOYvrqgSvaIoUmlnaHRMZWc=')) or char:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('CFYppSOSOuqmWyNaWWTohQBQzakBeqllIqrTcgPWmcEgCAeDJwmADRlUmlnaHQgTGVn'))
+                local rightLeg = char:FindFirstChild("RightLeg") or char:FindFirstChild("Right Leg")
                 if rightLeg then
-                    local originalMesh = rightLeg:FindFirstChildOfClass(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('wpzGmVSrSrNvWTeEyguSGXPamJBYfDqhfxFoZzzrgAxOAoYLlQhxBZFU3BlY2lhbE1lc2g='))
+                    local originalMesh = rightLeg:FindFirstChildOfClass("SpecialMesh")
                     if originalMesh then
                         _G.PlayerCosmeticsCleanup.originalMeshId = originalMesh.MeshId
                         _G.PlayerCosmeticsCleanup.originalTextureId = originalMesh.TextureId
@@ -1692,7 +1683,7 @@ PlayerCosmetics:AddToggle({
                     
                     _G.PlayerCosmeticsCleanup.rightLegChildren = {}
                     for _, child in pairs(rightLeg:GetChildren()) do
-                        if child:IsA(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('WCYhchsHkwgQOTLSbjXcsMycQeDruLhOxFDCWoJImxXDVSKltegFRaKU3BlY2lhbE1lc2g=')) then
+                        if child:IsA("SpecialMesh") then
                             table.insert(_G.PlayerCosmeticsCleanup.rightLegChildren, {
                                 ClassName = child.ClassName,
                                 Properties = {
@@ -1709,10 +1700,10 @@ PlayerCosmetics:AddToggle({
         
         local function restoreRightLeg(char)
             if char then
-                local rightLeg = char:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('wCpNLUBMTIXtxsJJtolmWsizuzWdajKYwxnJQBTYeUbjKoRrHIgNqmrUmlnaHRMZWc=')) or char:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('DfLknqWvqTCldUmaXNXPdeFQfLLlOhVKbbvhIqPjiYdTFEJTCmmYVzCUmlnaHQgTGVn'))
+                local rightLeg = char:FindFirstChild("RightLeg") or char:FindFirstChild("Right Leg")
                 if rightLeg and _G.PlayerCosmeticsCleanup.rightLegChildren then
                     for _, child in pairs(rightLeg:GetChildren()) do
-                        if child:IsA(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('qbzdFJoNJczrkejdaMtDxAaNgpPePMghIIYwxOPTPNKaoKcZKAbVFKSU3BlY2lhbE1lc2g=')) then
+                        if child:IsA("SpecialMesh") then
                             child:Destroy()
                         end
                     end
@@ -1722,8 +1713,8 @@ PlayerCosmetics:AddToggle({
                     end
                     
                     for _, childData in ipairs(_G.PlayerCosmeticsCleanup.rightLegChildren) do
-                        if childData.ClassName == cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('BozMFRjUjbjboRwbRtYfdCxBabUVNMnQDQCuFKXCjEdIOWybeLVzBQzU3BlY2lhbE1lc2g=') then
-                            local newMesh = Instance.new(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('qdhFMqhvnvFTAOUMELuevAfWUYpNBhygWykCIFbaSDMOhlhJvuFmMdEU3BlY2lhbE1lc2g='))
+                        if childData.ClassName == "SpecialMesh" then
+                            local newMesh = Instance.new("SpecialMesh")
                             newMesh.MeshId = childData.Properties.MeshId
                             newMesh.TextureId = childData.Properties.TextureId
                             newMesh.Scale = childData.Properties.Scale
@@ -1742,11 +1733,11 @@ PlayerCosmetics:AddToggle({
             }
             
             if lp.Character then
-                local head = lp.Character:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('erPZEwMrbiASzovXqAkJXPHgIfYOvRKVAEXWcIMgqNINtTTFsRiTqtBSGVhZA=='))
+                local head = lp.Character:FindFirstChild("Head")
                 if head and getgenv().Config.Headless then
                     _G.PlayerCosmeticsCleanup.headTransparency = head.Transparency
                     
-                    local decal = head:FindFirstChildOfClass(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('kSbnibowdWwgFPIZJTAwtkxmRvlHcEkGFpoTjZiYFBnNXXtoPUaRuOiRGVjYWw='))
+                    local decal = head:FindFirstChildOfClass("Decal")
                     if decal then
                         _G.PlayerCosmeticsCleanup.faceDecalId = decal.Texture
                         _G.PlayerCosmeticsCleanup.faceDecalName = decal.Name
@@ -1758,11 +1749,11 @@ PlayerCosmetics:AddToggle({
             end
             
             _G.PlayerCosmeticsCleanup.characterAddedConn = lp.CharacterAdded:Connect(function(char)
-                local head = char:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('OoHFdIekLXUTErkgdpgfAwEPiMZsRAimoCfqalSiRaXIfAbXmxYfJsXSGVhZA=='))
+                local head = char:FindFirstChild("Head")
                 if head and getgenv().Config.Headless then
                     _G.PlayerCosmeticsCleanup.headTransparency = head.Transparency
                     
-                    local decal = head:FindFirstChildOfClass(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('BkCXYgKoDwFGYYfFvDlSfSDdOrBXQhHULlipgClkZpArJUZRBbWlKFDRGVjYWw='))
+                    local decal = head:FindFirstChildOfClass("Decal")
                     if decal then
                         _G.PlayerCosmeticsCleanup.faceDecalId = decal.Texture
                         _G.PlayerCosmeticsCleanup.faceDecalName = decal.Name
@@ -1778,10 +1769,10 @@ PlayerCosmetics:AddToggle({
                     while CosmeticsActive do
                         local char = lp.Character
                         if char then
-                            local head = char:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('QIQIQWrwnwwXumLAEmHnDWhhRxBIMRXNrwHemoSvmrrXCzzhSQSGjEESGVhZA=='))
+                            local head = char:FindFirstChild("Head")
                             if head then
                                 head.Transparency = 1
-                                local decal = head:FindFirstChildOfClass(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('dLajXDbYoNVGlJLPOWAJLPGWqxPBmdDTFjWZeKjXeaCdcSbZCIzvRbRRGVjYWw='))
+                                local decal = head:FindFirstChildOfClass("Decal")
                                 if decal then
                                     decal:Destroy()
                                 end
@@ -1807,13 +1798,13 @@ PlayerCosmetics:AddToggle({
 
             local char = lp.Character
             if char then
-                local head = char:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('roHNWxBlDmJnHBLpMkhZUIIVolUCdnmeIXdOHFAdHLxpbRYuUMXpZtRSGVhZA=='))
+                local head = char:FindFirstChild("Head")
                 if head and _G.PlayerCosmeticsCleanup.headTransparency ~= nil then
                     head.Transparency = _G.PlayerCosmeticsCleanup.headTransparency
                     
                     if _G.PlayerCosmeticsCleanup.faceDecalId then
-                        local newDecal = head:FindFirstChildOfClass(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('BuqWlNNwQuMQwZCSzSytHmPDNhlAHVfSJPxDxOhvkNvFCIwfIhUoUExRGVjYWw=')) or Instance.new(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('izVGBlibdiYVjqfTHYKbytUwbhNisxMtPeaAbOzkdIPomcFPvPyTrWrRGVjYWw='), head)
-                        newDecal.Name = _G.PlayerCosmeticsCleanup.faceDecalName or cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('UNpEEuKjIniaOWJQlpcpvxYChYRjhsLhvwfMVBUXrvRskRaZFAvSEBNZmFjZQ==')
+                        local newDecal = head:FindFirstChildOfClass("Decal") or Instance.new("Decal", head)
+                        newDecal.Name = _G.PlayerCosmeticsCleanup.faceDecalName or "face"
                         newDecal.Texture = _G.PlayerCosmeticsCleanup.faceDecalId
                         newDecal.Face = Enum.NormalId.Front
                     end
@@ -1828,18 +1819,18 @@ PlayerCosmetics:AddToggle({
 })
 
 local Fly = player:AddSection({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('OpIfeBZnXeRPiqEaQYgNNbbzRjeNyelzdpUdxwrgYZRfdYiSavrsLsiRmx5'),
-	Position = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('fwpBpJfElUFbBDwylIFYQQOjvlZdlvHCgirMjEfbXWpOSgdsjyjZpzgbGVmdA=='),
+	Name = "Fly",
+	Position = "left",
 });
 
 Fly:AddToggle({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ExUsPBCagQBBnhCAYLjLNizeHtkAAPLhtYTKNGDDQRpvcWzCRSVWwcERmx5'),
+    Name = "Fly",
     Callback = function(value)
     if value then
             getgenv().FlyEnabled = true
             local char = Player.Character or Player.CharacterAdded:Wait()
-            local hrp = char:WaitForChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('NZAVaSmLZTgOFtZPLEXsjkyqhhXnSteJwJkPfOBwnliEyyHYjOGasdjSHVtYW5vaWRSb290UGFydA=='))
-            local humanoid = char:WaitForChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('JxpmoulXdRDbEQQoVUjxinyibCEHRxTAVrcTxBSsZDXoRMBZSXwkyEWSHVtYW5vaWQ='))
+            local hrp = char:WaitForChild("HumanoidRootPart")
+            local humanoid = char:WaitForChild("Humanoid")
             
             getgenv().OriginalStateType = humanoid:GetState()
             
@@ -1854,12 +1845,12 @@ Fly:AddToggle({
                 end
             end)
             
-            local bodyGyro = Instance.new(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('sJSkbmzaAqhICuiQEugpPZXGFfPsZzWXJkiZgVOZYQFsjonEfZqoXWIQm9keUd5cm8='))
+            local bodyGyro = Instance.new("BodyGyro")
             bodyGyro.P = 90000
             bodyGyro.MaxTorque = Vector3.new(9e9, 9e9, 9e9)
             bodyGyro.Parent = hrp
             
-            local bodyVelocity = Instance.new(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ZTRdvkPsBnOlAXfVyfIwkCfIRJKBzJJdUfXiarZRZKWzFxKkADpCnhcQm9keVZlbG9jaXR5'))
+            local bodyVelocity = Instance.new("BodyVelocity")
             bodyVelocity.Velocity = Vector3.new(0, 0, 0)
             bodyVelocity.MaxForce = Vector3.new(9e9, 9e9, 9e9)
             bodyVelocity.Parent = hrp
@@ -1884,12 +1875,12 @@ Fly:AddToggle({
                     if bodyGyro then bodyGyro:Destroy() end
                     if bodyVelocity then bodyVelocity:Destroy() end
                     
-                    bodyGyro = Instance.new(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('FbQkGWPktiqiPrIXGMsJfgXLFrAdDzCAfYfBBcVtyeVCIlFjxZmGPEQQm9keUd5cm8='))
+                    bodyGyro = Instance.new("BodyGyro")
                     bodyGyro.P = 90000
                     bodyGyro.MaxTorque = Vector3.new(9e9, 9e9, 9e9)
                     bodyGyro.Parent = hrp
                     
-                    bodyVelocity = Instance.new(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('XFiUORwcYoGxbUzWyZJdYJlZAQRmhRkJHfISKDXFkdezDWeYFkjofqcQm9keVZlbG9jaXR5'))
+                    bodyVelocity = Instance.new("BodyVelocity")
                     bodyVelocity.Velocity = Vector3.new(0, 0, 0)
                     bodyVelocity.MaxForce = Vector3.new(9e9, 9e9, 9e9)
                     bodyVelocity.Parent = hrp
@@ -1946,8 +1937,8 @@ Fly:AddToggle({
             
             local char = Player.Character
             if char then
-                local hrp = char:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('pzUVSJSyLhovznacSaBcdWfdDGjOlrcHbaUYBdnLhqTgWgneRAhuwYmSHVtYW5vaWRSb290UGFydA=='))
-                local humanoid = char:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('GPjYEbfOFMOEjHamTnNqweSbRvuVoPapRzvbDBdNWoSotovyGAxvDxkSHVtYW5vaWQ='))
+                local hrp = char:FindFirstChild("HumanoidRootPart")
+                local humanoid = char:FindFirstChild("Humanoid")
                 
                 if humanoid then
                     humanoid.PlatformStand = false
@@ -1958,7 +1949,7 @@ Fly:AddToggle({
                 
                 if hrp then
                     for _, v in ipairs(hrp:GetChildren()) do
-                        if v:IsA(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('lWMrrdbBTZxPrnNJanKHzJSmoLxzcxXLkPyNGHczHzqbZGYntdGiIpPQm9keUd5cm8=')) or v:IsA(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('VoeZRHezJYjroqDhbavJFWPSXAbHvTjQzawwIIGYIGkHOYDlQxTTXKnQm9keVZlbG9jaXR5')) then
+                        if v:IsA("BodyGyro") or v:IsA("BodyVelocity") then
                             v:Destroy()
                         end
                     end
@@ -1969,7 +1960,7 @@ Fly:AddToggle({
 })
 
 Fly:AddSlider({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('jVgjCjKoheTEpDiyppeFZwaMEZTSuMCNEpcIWtufQYOCLFGoBtsdYEmRmx5IFNwZWVk'),
+    Name = "Fly Speed",
     Min = 10,
     Max = 100,
     Default = 50,
@@ -1979,60 +1970,60 @@ Fly:AddSlider({
 })
 
 local HitSounds = player:AddSection({
-	Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('TyAmYXiVIOLTMxujzXSiAfQbNjFXcSevPrumJNESQyYDSANNoNbjpNsSGl0IFNvdW5kcw=='),
-	Position = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('lpJEtjtwbInXhBHtWBpvOhFgSLVtMMQklOpYjaJSKFJpZfqGnUgpJfocmlnaHQ='),
+	Name = "Hit Sounds",
+	Position = "right",
 });
 
 HitSounds:AddToggle({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('xAVYQqzvmXjGjDCzhQvneVfjXoxUnzqtnGxJuifoyzxxwfbfIEPVnQQSGl0IFNvdW5kcw=='),
+    Name = "Hit Sounds",
     Callback = function(value)
         hit_Sound_Enabled = value
     end
 })
 
-local Folder = Instance.new(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ZPqjVyYoQsdIKYmvzgVjDwBkGWOhSUuxwaFLTkkYXpkopWRpLoyrgGLRm9sZGVy'))
-Folder.Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('YLEEDgowyewDbdbqrWcMACsvOqEzxnyhAHtmOAeXDITFfWdikuvxiGWVXNlZnVsIFV0aWxpdHk=')
+local Folder = Instance.new("Folder")
+Folder.Name = "Useful Utility"
 Folder.Parent = workspace
 
-local hit_Sound = Instance.new(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('hyKtpSJiyJboMGqkXIWEvyfVYjLQLVeUZhpCfaSSaKQeIPAbOkWYHLbU291bmQ='), Folder)
+local hit_Sound = Instance.new('Sound', Folder)
 hit_Sound.Volume = 6
 
 local hitSoundOptions = { 
-    cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('joySYhOkAgrdgGBgudgIzInYAbxYqsOPxUWawAyTBaqznlgOzUBKhKyTWVkYWw='), 
-    cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('PsGSOCHYzcqqqzCrwAUWufcWPKdCkVknnHIegLmkqZFOELNPldwPtGoRmF0YWxpdHk='), 
-    cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('kTrGTRYlQALnfOlAPXEZfmqEClZaFQOIovzJnNTwSRvinMZdQIrFCSqU2tlZXQ='),
-    cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('uqXZtDDeEiUIByqrzYsKuUmnBsLYIUuKLsZEuhzRNDBRCXxoiMEIyoJU3dpdGNoZXM='),
-    cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('CGtnFouGPoFmuKSArzuDbhxzoSTZSDQWWOfFIhGPYYLrzrHIiFPHJHWUnVzdCBIZWFkc2hvdA=='), 
-    cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('qCwgSiubQJwxOSufnvvOUNoTPwGWprpORpQTglmMUFZkXHJkqHjxWxaTmV2ZXJsb3NlIFNvdW5k'), 
-    cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('nUCofwCNPpTtWowiceEoGtgqHoDaeOEvrwDHqdZjPcfrohSUhgwOVjkQnViYmxl'), 
-    cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('mUmUkeauusXbXXYDRUDNdjbpkWkmLheFviRgmgyHlSUkOsRtKJLQCyQTGFzZXI='), 
-    cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('jHslqlhLGqBohKVxvthTPVheYUdivImbWDXkARoYYQcsBNxPBSGKJKlU3RldmU='), 
-    cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('bWHBYwBtXhAlWrAnhtrGDwAKJRrwfjLLIbqNKzuWHWOqdZSsNLwxeEsQ2FsbCBvZiBEdXR5'), 
-    cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('AYtmdCBtSauBwArkFEoFuDgRVdSqdRkGMkExAUMkwOprltEOTTvdyKcQmF0'), 
-    cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('OrTIzZSMnVsviYOjsILwnRztGpMosTjxGxpOyJwIRquFXjexxrmWvzNVEYyIENyaXRpY2Fs'), 
-    cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('dAtRhGbQXQgFWjGKWCeyuYArkdPMEoKKvzPClMFNUcYfmXPbFYrGiqZU2FiZXI='), 
-    cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('kDFFrXHeBFShKKVmjarqUImSVNadWjPoVpkvrAeybUhrmGQsDkckVftQmFtZXdhcmU=')
+    "Medal", 
+    "Fatality", 
+    "Skeet",
+    "Switches",
+    "Rust Headshot", 
+    "Neverlose Sound", 
+    "Bubble", 
+    "Laser", 
+    "Steve", 
+    "Call of Duty", 
+    "Bat", 
+    "TF2 Critical", 
+    "Saber", 
+    "Bameware"
 }
 
 local hitSoundIds = {
-    Medal = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('xXdbYICSPsfQesnaUhwMTupiAToMcPMUvlcGfVbBhyzqWuHtISHWYIecmJ4YXNzZXRpZDovLzY2MDczMzY3MTg='),
-    Fatality = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('KnlCtQxBmtNRGthsaWxYDHxJmoDIuJrojWSywfaXbAvGpKimKfmtaZccmJ4YXNzZXRpZDovLzY2MDcxMTMyNTU='),
-    Skeet = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ODHCqOrxWlhlRoYeqYlGHFnnuHCUYqeHlrBRfVFlGrarBmRVUmWOoEZcmJ4YXNzZXRpZDovLzY2MDcyMDQ1MDE='),
-    Switches = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('xDdvPOUMmWONCjiCQGsTIOGIyhjKVRLZyNVQzsiXcITsBcMCvPHtkXRcmJ4YXNzZXRpZDovLzY2MDcxNzMzNjM='),
-    [cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('IRrehmNBNffFGRCGKcnFJciDWyQfASuPfdzJdjmmlNFwZNskjgsPBLyUnVzdCBIZWFkc2hvdA==')] = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('KuIbPKCluunjObjIepHUgNKrEkqOzTwUTpYewwhnkhoUEKEoElNhSkRcmJ4YXNzZXRpZDovLzEzODc1MDMzMTM4NzA2NA=='),
-    [cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('KlsKnLgoogZCOVQQNXavRqCOSQYYPQqSPIcahjksWYsQnriGPxhaANITmV2ZXJsb3NlIFNvdW5k')] = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('OrPndrXLpsJBZLiyTKIBaRlDgcKizQyCugFBrRgHTofPgYxEyHwSkVUcmJ4YXNzZXRpZDovLzExMDE2ODcyMzQ0NzE1Mw=='),
-    Bubble = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('eNQQKbOOqZftrNmvttKuqCULrkHYTofrnNAyotACduLztQgQEEXnFGxcmJ4YXNzZXRpZDovLzY1MzQ5NDc1ODg='),
-    Laser = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('iFJEHecGtkEmAJdUpkgjykRfdHHKtyASmDyoHeWazwdlkpUKfbcNwSScmJ4YXNzZXRpZDovLzc4Mzc0NjEzMzE='),
-    Steve = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('bIcXsvogFQhcswsXVXVoYISaUaYqQthXvDyriYWMJGrmZvmHPvJlXyocmJ4YXNzZXRpZDovLzQ5NjUwODM5OTc='),
-    [cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('eefxHzemBwtUeVicIMgHQcFESAcWITDDgbimFQeGTtjTGCviaGIJFvBQ2FsbCBvZiBEdXR5')] = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('oFkHfGctIcDSeFIetSVwgxuZYifFVgLGPlMhYYmVWfolRtDvjuPChqlcmJ4YXNzZXRpZDovLzU5NTIxMjAzMDE='),
-    Bat = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('XiurubyIYEfGFMDxxEcToqhFuxhLZuijtXljDzssFhxUPdxlSaWIAQecmJ4YXNzZXRpZDovLzMzMzM5MDczNDc='),
-    [cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('otFQeEDDJqOBxNWwtTRQhaYCkpbjBXpJOJAQqCemuIYcEWhTdrgDnXhVEYyIENyaXRpY2Fs')] = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('zGQSdneFBxlYqPADkCexRZfwZqEnToZUyfTZliWMyMITNtftuGwrsMhcmJ4YXNzZXRpZDovLzI5NjEwMjczNA=='),
-    Saber = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('uIjTMKVxHYkOLXetvXcETERAZwNvahHKyhiuXSlGZFhPCFrwkZLudlycmJ4YXNzZXRpZDovLzg0MTU2Nzg4MTM='),
-    Bameware = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('slKrilXoUSIwFOkWbOmfWPLbwALxjxAsvDBMzbsNxyzmvSQmZxCkeQLcmJ4YXNzZXRpZDovLzMxMjQzMzE4MjA=')
+    Medal = "rbxassetid://6607336718",
+    Fatality = "rbxassetid://6607113255",
+    Skeet = "rbxassetid://6607204501",
+    Switches = "rbxassetid://6607173363",
+    ["Rust Headshot"] = "rbxassetid://138750331387064",
+    ["Neverlose Sound"] = "rbxassetid://110168723447153",
+    Bubble = "rbxassetid://6534947588",
+    Laser = "rbxassetid://7837461331",
+    Steve = "rbxassetid://4965083997",
+    ["Call of Duty"] = "rbxassetid://5952120301",
+    Bat = "rbxassetid://3333907347",
+    ["TF2 Critical"] = "rbxassetid://296102734",
+    Saber = "rbxassetid://8415678813",
+    Bameware = "rbxassetid://3124331820"
 }
 
 HitSounds:AddSlider({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('VssAhxGdrvUFWnzUIgKFIywMQACfIckLoQQvyEhESxHeGHkTyCgqVVtSGl0IFNvdW5kIFZvbHVtZQ=='),
+    Name = "Hit Sound Volume",
     Min = 0,
     Max = 10,
     Default = 6,
@@ -2042,7 +2033,7 @@ HitSounds:AddSlider({
 })
 
 HitSounds:AddDropdown({
-    Name = cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('koIalvnjDDxKNHnJLrXKMFCwQNJXFbDxmtudIQulBwEgMMjsQzMfZTISGl0IFNvdW5k'),
+    Name = "Hit Sound",
     Options = hitSoundOptions,
     Callback = function(selectedOption)
         if hitSoundIds[selectedOption] then
@@ -2112,9 +2103,9 @@ workspace.Balls.ChildRemoved:Connect(function(Value)
     Parries = 0
     Parried = false
 
-    if Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('SGQfLoObBXwMKqvDiPYUaMwAVQiAHOuVwATErOvVVpReJudJbQginJHVGFyZ2V0IENoYW5nZQ==')] then
-        Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('nZtioESxAFRxgIciEIUogOVbCXMwJUhACpfcmXBghYavdhpWgrjldLKVGFyZ2V0IENoYW5nZQ==')]:Disconnect()
-        Connections_Manager[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('oYaUoyVydnHbPXzJlKUYfKtnAYGaToCpeKJmwuMzJoEnAOBXmZYXdJOVGFyZ2V0IENoYW5nZQ==')] = nil
+    if Connections_Manager['Target Change'] then
+        Connections_Manager['Target Change']:Disconnect()
+        Connections_Manager['Target Change'] = nil
     end
 end)
 
@@ -2126,7 +2117,7 @@ ReplicatedStorage.Remotes.ParrySuccessAll.OnClientEvent:Connect(function(a, b)
         return
     end
 
-    local Zoomies = Ball:FindFirstChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('qdPPSrhTUheJceNmKcsNjZTZHyjiRNXyYveKCPaieWpRCSoHvbMsVjsem9vbWllcw=='))
+    local Zoomies = Ball:FindFirstChild('zoomies')
 
     if not Zoomies then
         return
@@ -2142,7 +2133,7 @@ ReplicatedStorage.Remotes.ParrySuccessAll.OnClientEvent:Connect(function(a, b)
     local Direction = (Player.Character.PrimaryPart.Position - Ball.Position).Unit
     local Dot = Direction:Dot(Ball_Direction)
 
-    local Pings = Network.ServerStatsItem[cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('izaoqtNmtNizScSgaiIKEZJzrXxyYkqDYUHSBEbyRWoudPVoNyPelQnRGF0YSBQaW5n')]:GetValue()
+    local Pings = Network.ServerStatsItem['Data Ping']:GetValue()
 
 
     local Speed_Threshold = math.min(Speed / 100, 40)
@@ -2160,7 +2151,7 @@ ReplicatedStorage.Remotes.ParrySuccessAll.OnClientEvent:Connect(function(a, b)
     end
 end)
 
-game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ejChZTDCUbhmYmOHLfpLCLBCLfXHSoiefAGqFWNroAkvoOxyiUankIvUmVwbGljYXRlZFN0b3JhZ2U=')).Remotes.Phantom.OnClientEvent:Connect(function(a, b)
+game:GetService('ReplicatedStorage').Remotes.Phantom.OnClientEvent:Connect(function(a, b)
     if b.Name == tostring(Player) then
         Phantom = true
     else
@@ -2168,8 +2159,8 @@ game:GetService(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('ejChZTDCUbhmYmOHLfpLCLBCLf
     end
 end)
 
-local Balls = workspace:WaitForChild(cPPhyUJXTwYYtcDjVkIOuqWgxtepzjxOtcUE('DPFRJoOMvcKbvBaXMXbBooFMSwLOFqjfeECOrvNOWkstfwlTmNRBcAhQmFsbHM='))
+local Balls = workspace:WaitForChild('Balls')
 
 Balls.ChildRemoved:Connect(function()
     Phantom = false
-end)    
+end)
