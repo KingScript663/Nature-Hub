@@ -762,7 +762,7 @@ local function AnimateGif(ImageLabel, Width, Height, Rows, Columns, NumberOfFram
     end)
 end
 
-AnimateGif(Icon, 60, 40, 2, 3, 5, "rbxassetid://101876453349383", 10)
+AnimateGif(Icon, 60, 40, 2, 3, 5, "rbxassetid://74080484918102", 10)
     
     local Divider = Instance.new('Frame')
     Divider.Name = 'Divider'
@@ -1304,7 +1304,7 @@ end
             Icon.ImageTransparency = 0.699999988079071
             Icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
             Icon.AnchorPoint = Vector2.new(0, 0.5)
-            Icon.Image = 'rbxassetid://79095934438045'
+            Icon.Image = 'rbxassetid://101876453349383'
             Icon.BackgroundTransparency = 1
             Icon.Position = UDim2.new(0.07100000232458115, 0, 0.8199999928474426, 0)
             Icon.Name = 'Icon'
